@@ -1,0 +1,32 @@
+{
+  "name": "creditcard.js",
+  "version": "0.1.0",
+  "description": "A tool for Credit Card validation",
+  "main": "creditcard.js",
+  "private": true,
+  "scripts": {
+    "build-browser": "browserify src/creditCard.js -t [ babelify --presets [ es2015 ] ] -o dist/creditcard.js",
+    "test": "./node_modules/karma/bin/karma start",
+
+    "clean": "rm -r dist/*",
+    "build": "npm run clean build-browser"
+  },
+  "keywords": [
+    "credit",
+    "credit card",
+    "money"
+  ],
+  "author": "@fernahh",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-browserify": "^4.4.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "phantomjs": "^1.9.19"
+  }
+}
