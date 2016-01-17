@@ -8,7 +8,7 @@ describe('CreditCard', () => {
   describe('#getCreditCardByNumber', () => {
     it('should return the name of Credit Card', () => {
       let creditCardName = creditcard.getCreditCardByNumber('4024007194756572');
-      expect(creditCardName).toBe('visa');
+      expect(creditCardName).toBe('Visa');
     });
 
     it('should return false', () => {
