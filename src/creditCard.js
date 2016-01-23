@@ -31,4 +31,17 @@ export default class CreditCard {
 
     return false;
   }
+
+  validadeSecuryCode(number, code) {
+    let brand = this.getCreditCardNameByNumber(number);
+    let numberLength;
+
+    numberLength = (brand === 'Amex') ? 4 : 3;
+    let regex = new RegExp(`[0-9]{${numberLength}}`);
+
+    if (code.length === numberLength && regex.test(code))
+      return true;
+
+    return false;
+  }
 }
