@@ -1,6 +1,3 @@
-// Karma configuration
-// Generated on Sun Jan 17 2016 18:02:44 GMT-0200 (BRST)
-
 module.exports = function(config) {
   config.set({
     basePath: '',
@@ -21,9 +18,9 @@ module.exports = function(config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
+    autoWatch: false,
     browsers: ['PhantomJS'],
-    singleRun: false,
+    singleRun: true,
     concurrency: Infinity,
     browserify: {
       debug: true,

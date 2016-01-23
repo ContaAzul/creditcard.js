@@ -46,18 +46,20 @@ export default class CreditCard {
   }
 
   validadeExpiryDate(month, year) {
-    let yearLength = year.length;
+    let m = month;
+    let y = year;
+    let yearLength = y.length;
 
     if (yearLength < 2 && yearLength > 4)
       return false;
 
-    month = parseInt(month, 10);
-    year = parseInt(year, 10);
+    m = parseInt(m, 10);
+    y = parseInt(y, 10);
 
-    if (month < 1 || month > 12)
+    if (m < 1 || m > 12)
       return false;
 
-    if (year < 1000 || year >= 3000)
+    if (y < 1000 || y >= 3000)
       return false;
 
     return true;

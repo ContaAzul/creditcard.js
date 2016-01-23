@@ -19,13 +19,14 @@ export default class Luhn {
 
   validate(number) {
     let regex = new RegExp('/[^0-9-\s]+/');
+    let digits = number;
 
-    if (regex.test(number))
+    if (regex.test(digits))
       return false;
 
-    number = number.replace(/\D/g, '');
+    digits = digits.replace(/\D/g, '');
 
-    let sum = this._sum(number);
+    let sum = this._sum(digits);
     return sum > 0 && sum % 10 === 0;
   }
-};
+}
