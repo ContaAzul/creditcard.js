@@ -6,7 +6,19 @@ describe('CreditCard', () => {
     global.VALID_CREDIT_CARD = '4024007194756572';
     global.INVALID_CREDIT_CARD = '00000';
   });
-  describe('#validadeExpiryDate', () => {});
+  describe('#validadeExpiryDate', () => {
+    it('should return true with its a VALID date', () => {
+      expect(creditcard.validadeExpiryDate('10', '2020')).toBeTruthy();
+    });
+
+    it('should return true with its a INVALID year', () => {
+      expect(creditcard.validadeExpiryDate('10', '200')).toBeFalsy();
+    });
+
+    it('should return true with its a INVALID month', () => {
+      expect(creditcard.validadeExpiryDate('15', '2020')).toBeFalsy();
+    });
+  });
 
   describe('#validadeCreditCard', () => {
     it('should return true with its a VALID credit card', () => {

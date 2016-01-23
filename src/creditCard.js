@@ -44,4 +44,22 @@ export default class CreditCard {
 
     return false;
   }
+
+  validadeExpiryDate(month, year) {
+    let yearLength = year.length;
+
+    if (yearLength < 2 && yearLength > 4)
+      return false;
+
+    month = parseInt(month, 10);
+    year = parseInt(year, 10);
+
+    if (month < 1 || month > 12)
+      return false;
+
+    if (year < 1000 || year >= 3000)
+      return false;
+
+    return true;
+  }
 }
