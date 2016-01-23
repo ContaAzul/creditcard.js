@@ -18,7 +18,9 @@ export default class Luhn {
   }
 
   validate(number) {
-    if (/[^0-9-\s]+/.test(number))
+    let regex = new RegExp('/[^0-9-\s]+/');
+
+    if (regex.test(number))
       return false;
 
     number = number.replace(/\D/g, '');

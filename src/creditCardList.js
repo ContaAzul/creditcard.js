@@ -26,8 +26,7 @@ const CREDIT_CARD_LIST = [
   }, {
     name: 'Mastercard',
     regexpBin: '^5[1-5][0-9][0-9]',
-    regexpFull: '^5[1-5][0-9]{14}$',
-    regexpCvv: '^\d{3}$'
+    regexpFull: '^5[1-5][0-9]{14}$'
   }, {
     name: 'Visa',
     regexpBin: '^4',

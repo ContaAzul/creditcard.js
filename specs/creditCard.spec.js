@@ -3,8 +3,16 @@ import CreditCard from '../src/creditCard.js';
 describe('CreditCard', () => {
   beforeEach(() => {
     global.creditcard = new CreditCard();
-    global.VALID_CREDIT_CARD = '4024007194756572';
     global.INVALID_CREDIT_CARD = '00000';
+    global.CREDIT_CARDS = {
+      visa: '4539578763621486',
+      master: '5369835519963014',
+      diners: '30346836403940',
+      elo: '5041756758046020',
+      amex: '373257135458763',
+      aura: '5078601870000127985',
+      hiper: '6062825303833679'
+    };
   });
   describe('#validadeExpiryDate', () => {
     it('should return true with its a VALID date', () => {
@@ -22,7 +30,7 @@ describe('CreditCard', () => {
 
   describe('#validadeCreditCard', () => {
     it('should return true with its a VALID credit card', () => {
-      expect(creditcard.validate(VALID_CREDIT_CARD)).toBeTruthy();
+      expect(creditcard.validate(CREDIT_CARDS.visa)).toBeTruthy();
     });
 
     it('should return false with its a VALID credit card', () => {
@@ -33,24 +41,54 @@ describe('CreditCard', () => {
   describe('#validadeSecuryCode', () => {
     it('should return true when its a VALID security code', () => {
       let securityCode = '100';
-      expect(creditcard.validadeSecuryCode(VALID_CREDIT_CARD, securityCode)).toBeTruthy();
+      expect(creditcard.validadeSecuryCode('4112888888881881', securityCode)).toBeTruthy();
     });
 
     it('should return true when its a security code of Amex', () => {
       let securityCode = '5000';
-      expect(creditcard.validadeSecuryCode('378734493671000', securityCode)).toBeTruthy();
+      expect(creditcard.validadeSecuryCode(CREDIT_CARDS.amex, securityCode)).toBeTruthy();
     });
 
     it('should return false when its a INVALID security code', () => {
       let securityCode = '10';
-      expect(creditcard.validadeSecuryCode(VALID_CREDIT_CARD, securityCode)).toBeFalsy();
+      expect(creditcard.validadeSecuryCode(CREDIT_CARDS.visa, securityCode)).toBeFalsy();
     });
   });
 
   describe('#getCreditCardNameByNumber', () => {
-    it('should return the name of Credit Card', () => {
-      let creditCardName = creditcard.getCreditCardNameByNumber(VALID_CREDIT_CARD);
+    it('should return the name of Amex', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.amex);
+      expect(creditCardName).toBe('Amex');
+    });
+
+    it('should return the name of Mastercard', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.master);
+      expect(creditCardName).toBe('Mastercard');
+    });
+
+    it('should return the name of Visa', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.visa);
       expect(creditCardName).toBe('Visa');
+    });
+
+    it('should return the name of Diners', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.diners);
+      expect(creditCardName).toBe('Diners');
+    });
+
+    it('should return the name of Elo', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.elo);
+      expect(creditCardName).toBe('Elo');
+    });
+
+    it('should return the name of Aura', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.aura);
+      expect(creditCardName).toBe('Aura');
+    });
+
+    it('should return the name of Hipercard', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.hiper);
+      expect(creditCardName).toBe('Hipercard');
     });
 
     it('should return false', () => {
