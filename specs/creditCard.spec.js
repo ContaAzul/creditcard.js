@@ -14,6 +14,7 @@ describe('CreditCard', () => {
       hiper: '6062825303833679'
     };
   });
+
   describe('#validadeExpiryDate', () => {
     it('should return true with its a VALID date', () => {
       expect(creditcard.validadeExpiryDate('10', '2020')).toBeTruthy();
