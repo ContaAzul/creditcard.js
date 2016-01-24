@@ -8,14 +8,16 @@
     "build:debug": "browserify src/creditCard.js -s CreditCard -t [babelify --loose all] -p [bannerify --file .banner ] -o dist/browser/creditcard.js",
     "build:min": "uglifyjs dist/browser/creditcard.js --comments '/!/' -m screw_ie8=true -c screw_ie8=true,unused=false -o dist/browser/creditcard.min.js",
     "build:node": "babel -d dist/node src -s",
+    "build:all": "npm run build:debug && npm run build:min && npm run build:node",
     "build:watch": "watchify src/creditCard.js -s CreditCard -t [babelify --loose all] -o dist/browser/creditcard.js -v",
 
     "test": "karma start --single-run",
     "test:watch": "karma start --watch",
     "lint": "eslint src specs",
-    "clean": "rm -rf dist/* && mkdir dist/node && mkdir dist/browser",
+    "check": "npm run test && npm run lint",
 
-    "build": "npm run clean && npm run lint && npm run test && npm run build:node && npm run build:debug && npm run build:min"
+    "clean": "rm -rf dist/* && mkdir dist/node && mkdir dist/browser",
+    "build": "npm run clean && npm run check && npm run build:all"
   },
   "keywords": [
     "credit",
