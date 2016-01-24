@@ -1,7 +1,7 @@
 {
   "name": "creditcard.js",
   "version": "0.1.0",
-  "description": "A tool for Credit Card validation",
+  "description": "A simple library for validation of credit cards",
   "main": "creditcard.js",
   "private": true,
   "scripts": {
