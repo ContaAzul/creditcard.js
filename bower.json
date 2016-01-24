@@ -1,0 +1,25 @@
+{
+  "name": "creditcard.js",
+  "description": "A simple library for validation of credit cards in JavaScript",
+  "main": "lib/creditCard.js",
+  "authors": [
+    "@fernahh"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "credit",
+    "card",
+    "money"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "README.md",
+    "karma.conf.js",
+    "package.json",
+    "src",
+    "example"
+  ]
+}

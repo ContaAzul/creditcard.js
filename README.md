@@ -1,6 +1,6 @@
 # credicard.js
 
-> A simple library for validation of credit cards.
+> A simple library for validation of credit cards in JavaScript.
 
 ## Install
 
@@ -22,9 +22,18 @@ For CDN use, check [this link](link).
 
 ## Usage
 
+In browser:
+
 ```javascript
 var obj = new CreditCard();
 obj.getCreditCardNameByNumber('4539578763621486'); // return 'Visa'
+```
+
+In server:
+
+```javascript
+var creditcard = require('dist/node/creditcard.js');
+credit.getCreditCardNameByNumber('4539578763621486'); // return 'Visa'
 ```
 
 ### Methods
