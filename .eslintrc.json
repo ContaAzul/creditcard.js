@@ -5,10 +5,18 @@
   "env": {
     "es6": true,
     "browser": true,
-    "node": true
+    "node": true,
+    "jasmine": true,
+    "es6": true
   },
   "globals": {
-    "require": true
+    "require": true,
+    "creditcard": true,
+    "CREDIT_CARDS": true,
+    "INVALID_CREDIT_CARD": true,
+    "VALID_CREDIT_CARD": true,
+    "luhn": true,
+    "list": true
   },
   "rules": {
     "camelcase": 2,

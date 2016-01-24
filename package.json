@@ -10,7 +10,7 @@
     "build:min": "uglifyjs dist/creditcard.js --comments '/!/' -m screw_ie8=true -c screw_ie8=true,unused=false -o dist/creditcard.min.js",
     "build:watch": "watchify src/creditCard.js -s CreditCard -t [babelify --loose all] -o dist/creditcard.js -v",
     "test": "karma start --single-run",
-    "lint": "eslint src"
+    "lint": "eslint src specs"
   },
   "keywords": [
     "credit",
