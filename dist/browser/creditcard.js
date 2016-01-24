@@ -1,6 +1,6 @@
 /*!
  * creditcard.js v0.1.0
- * Created by @fernahh
+ * Created by @fernahh.
  *
  * Licensed MIT.
  */
