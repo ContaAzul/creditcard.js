@@ -1,5 +1,7 @@
 # credicard.js
 
+[![Build Status](https://api.travis-ci.org/DomPhysis/credicard.js.svg?branch=master)](https://travis-ci.org/DomPhysis/credicard.js)
+
 > A simple library for validation of credit cards in JavaScript.
 
 ## Install
