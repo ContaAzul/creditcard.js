@@ -1,5 +1,7 @@
 # credicard.js
 
+[![Build Status](https://api.travis-ci.org/DomPhysis/credicard.js.svg?branch=master)](https://travis-ci.org/DomPhysis/credicard.js)
+
 > A simple library for validation of credit cards in JavaScript.
 
 ## Install
@@ -54,9 +56,11 @@ Returns whether the value is `true` or `false`.
 
 Returns a `String` with the credit card name.
 
-## Support
+## Browser support
 
-// todo
+| <img src="http://i.imgur.com/dJC1GUv.png" width="48px" height="48px" alt="Chrome logo"> | <img src="http://i.imgur.com/o1m5RcQ.png" width="48px" height="48px" alt="Firefox logo"> | <img src="http://i.imgur.com/8h3iz5H.png" width="48px" height="48px" alt="Internet Explorer logo"> | <img src="http://i.imgur.com/iQV4nmJ.png" width="48px" height="48px" alt="Opera logo"> | <img src="http://i.imgur.com/j3tgNKJ.png" width="48px" height="48px" alt="Safari logo"> |
+|:---:|:---:|:---:|:---:|:---:|
+| Latest ✔ | Latest ✔ | 9+ ✔ | Latest ✔ | 8+ ✔ |
 
 ## Development
 
