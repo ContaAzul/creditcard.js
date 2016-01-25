@@ -2,7 +2,7 @@
   "name": "creditcard.js",
   "version": "0.1.0",
   "description": "A simple library for validation of credit cards in JavaScript",
-  "main": "lib/creditCard.js",
+  "main": "dist/creditCard.js",
   "files": [
     "dist",
     "lib",
@@ -20,14 +20,16 @@
     "lint": "eslint src specs",
     "check": "npm run test && npm run lint",
     "clean": "rimraf dist/* && mkdir dist/node && mkdir dist/browser",
-    "build": "npm run clean && npm run check && npm run build:all"
+    "build": "npm run clean && npm run check && npm run build:all",
+    "preinstall": "npm run build"
   },
   "keywords": [
     "credit",
     "card",
-    "money"
+    "money",
+    "validator"
   ],
-  "author": "@fernahh",
+  "author": "@ContaAzul",
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.8.29",
