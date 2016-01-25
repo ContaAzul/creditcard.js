@@ -15,13 +15,11 @@
     "build:lib": "babel src --out-dir lib",
     "build:all": "npm run build:lib && npm run build:debug && npm run build:min && npm run build:node",
     "build:watch": "watchify src/creditCard.js -s CreditCard -t [babelify --loose all] -o dist/browser/creditcard.js -v",
-
     "test": "karma start --single-run",
     "test:watch": "karma start --watch",
     "lint": "eslint src specs",
     "check": "npm run test && npm run lint",
-
-    "clean": "rm -rf dist/* && mkdir dist/node && mkdir dist/browser",
+    "clean": "rimraf dist/* && mkdir dist/node && mkdir dist/browser",
     "build": "npm run clean && npm run check && npm run build:all"
   },
   "keywords": [
@@ -45,6 +43,7 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.3",
     "phantomjs": "^1.9.19",
+    "rimraf": "^2.5.1",
     "uglify-js": "^2.4.24",
     "watchify": "^3.4.0"
   }
