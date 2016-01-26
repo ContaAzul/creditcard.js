@@ -1,6 +1,6 @@
 # credicard.js
 
-[![Build Status](https://api.travis-ci.org/DomPhysis/credicard.js.svg?branch=master)](https://travis-ci.org/DomPhysis/credicard.js)
+[![Build Status](https://api.travis-ci.org/ContaAzul/credicard.js.svg?branch=master)](https://travis-ci.org/ContaAzul/credicard.js)
 
 > A simple credit cards validation library in JavaScript.
 
