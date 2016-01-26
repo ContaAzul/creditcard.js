@@ -4,6 +4,7 @@
 
 > A simple credit cards validation library in JavaScript.
 
+<img src="assets/images/credit-card-logo.png" alt="creditcard.js" />
 ## Install
 
 You can [download the zip file](https://github.com/contaazul/creditcard.js/archive/master.zip) or use NPM and Bower.
