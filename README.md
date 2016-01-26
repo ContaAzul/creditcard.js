@@ -1,4 +1,4 @@
-# creditcard.js <img src="assets/logo.png" alt="creditcard.js" />
+# creditcard.js <img src="assets/images/logo.png" style="width: 100px; height: 100px;" alt="creditcard.js" />
 
 [![Build Status](https://api.travis-ci.org/ContaAzul/creditcard.js.svg?branch=master)](https://travis-ci.org/ContaAzul/creditcard.js)
 
