@@ -6,7 +6,7 @@
 
 ## Install
 
-You can [download the minified file](link) or use NPM and Bower.
+You can [download the zip file](https://github.com/contaazul/creditcard.js/archive/master.zip) or use NPM and Bower.
 
 ### NPM
 
@@ -20,8 +20,6 @@ $ npm install --save-dev creditcard.js
 $ bower install creditcard.js --save
 ```
 
-For CDN use, check [this link](link).
-
 ## Usage
 
 In the browser:
@@ -34,7 +32,7 @@ obj.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 In the server:
 
 ```javascript
-var creditcard = require('dist/node/creditcard.js');
+var creditcard = require('creditcard.js');
 credit.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 ```
 
@@ -62,10 +60,6 @@ Returns a `String` with the credit card name.
 |:---:|:---:|:---:|:---:|:---:|
 | Latest ✔ | Latest ✔ | 9+ ✔ | Latest ✔ | 8+ ✔ |
 
-## Development
-
-// todo
-
 ## License
 
-MIT
+MIT © Conta Azul
