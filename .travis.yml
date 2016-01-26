@@ -1,4 +1,17 @@
-sudo: false
 language: node_js
 node_js:
-  - stable
+  - "4.0"
+before_install: |
+    case ${TRAVIS_NODE_VERSION} in
+        iojs*)
+            echo "Not upgrading npm for iojs."
+            ;;
+        *)
+            npm update -g npm
+            ;;
+    esac
+before_script:
+  - npm install -g grunt-cli
+  - npm install
+script:
+  - npm run check
