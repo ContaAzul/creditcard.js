@@ -1,17 +1,7 @@
 language: node_js
 node_js:
-  - "4.0"
-before_install: |
-    case ${TRAVIS_NODE_VERSION} in
-        iojs*)
-            echo "Not upgrading npm for iojs."
-            ;;
-        *)
-            npm update -g npm
-            ;;
-    esac
+  - stable
 before_script:
-  - npm install -g grunt-cli
   - npm install
 script:
   - npm run check
