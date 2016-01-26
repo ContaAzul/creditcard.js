@@ -1,6 +1,6 @@
 {
   "name": "creditcard.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A simple library for validation of credit cards in JavaScript",
   "main": "dist/node/creditCard.js",
   "files": [
