@@ -9,7 +9,7 @@
     "src"
   ],
   "scripts": {
-    "build:debug": "browserify src/creditCard.js -s CreditCard -t [babelify --loose all] -p [bannerify --file .banner ] -o dist/browser/creditcard.js",
+    "build:debug": "mkdir -p dist/node && mkdir -p dist/browser && browserify src/creditCard.js -s CreditCard -t [babelify --loose all] -p [bannerify --file .banner ] -o dist/browser/creditcard.js",
     "build:min": "uglifyjs dist/browser/creditcard.js --comments '/!/' -m screw_ie8=true -c screw_ie8=true,unused=false -o dist/browser/creditcard.min.js",
     "build:node": "babel -d dist/node src -s",
     "build:lib": "babel src --out-dir lib",
@@ -19,9 +19,8 @@
     "test:watch": "karma start --watch",
     "lint": "eslint src specs",
     "check": "npm run test && npm run lint",
-    "clean": "rimraf lib dist && mkdir -p dist/node && mkdir -p dist/browser",
-    "build": "npm run clean && npm run check && npm run build:all",
-    "preinstall": "npm run build"
+    "build": "npm run check && npm run build:all",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "credit",
@@ -46,7 +45,6 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.3",
     "phantomjs": "^1.9.19",
-    "rimraf": "^2.5.1",
     "uglify-js": "^2.4.24",
     "watchify": "^3.4.0"
   }
