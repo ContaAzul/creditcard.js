@@ -1,4 +1,4 @@
-# credicard.js
+# creditcard.js
 
 [![Build Status](https://api.travis-ci.org/ContaAzul/credicard.js.svg?branch=master)](https://travis-ci.org/ContaAzul/credicard.js)
 
