@@ -2,7 +2,7 @@
 
 [![Build Status](https://api.travis-ci.org/DomPhysis/credicard.js.svg?branch=master)](https://travis-ci.org/DomPhysis/credicard.js)
 
-> A simple library for validation of credit cards in JavaScript.
+> A simple credit cards validation library in JavaScript.
 
 ## Install
 
@@ -10,32 +10,32 @@ You can [download the minified file](link) or use NPM and Bower.
 
 ### NPM
 
-```
-npm install --save-dev creditcard.js
+```sh
+$ npm install --save-dev creditcard.js
 ```
 
 ### Bower
 
-```
-bower install creditcard.js --save
+```sh
+$ bower install creditcard.js --save
 ```
 
 For CDN use, check [this link](link).
 
 ## Usage
 
-In browser:
+In the browser:
 
 ```javascript
 var obj = new CreditCard();
-obj.getCreditCardNameByNumber('4539578763621486'); // return 'Visa'
+obj.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 ```
 
-In server:
+In the server:
 
 ```javascript
 var creditcard = require('dist/node/creditcard.js');
-credit.getCreditCardNameByNumber('4539578763621486'); // return 'Visa'
+credit.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 ```
 
 ### Methods
