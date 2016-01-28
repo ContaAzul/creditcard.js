@@ -2,6 +2,7 @@
   "name": "creditcard.js",
   "description": "A simple library for validation of credit cards in JavaScript",
   "main": "lib/creditCard.js",
+  "version": "0.0.2",
   "authors": [
     "@ContaAzul"
   ],

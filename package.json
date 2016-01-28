@@ -1,20 +1,19 @@
 {
   "name": "creditcard.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple library for validation of credit cards in JavaScript",
-  "main": "dist/node/creditCard.js",
+  "main": "dist/creditcard.min.js",
   "files": [
     "dist",
     "lib",
     "src"
   ],
   "scripts": {
-    "build:debug": "mkdir -p dist/node && mkdir -p dist/browser && browserify src/creditCard.js -s CreditCard -t [babelify --loose all] -p [bannerify --file .banner ] -o dist/browser/creditcard.js",
-    "build:min": "uglifyjs dist/browser/creditcard.js --comments '/!/' -m screw_ie8=true -c screw_ie8=true,unused=false -o dist/browser/creditcard.min.js",
-    "build:node": "babel -d dist/node src -s",
+    "build:debug": "mkdir -p dist && browserify src/creditCard.js -s CreditCard -t [babelify --loose all] -p [bannerify --file .banner ] -o dist/creditcard.js",
+    "build:min": "uglifyjs dist/creditcard.js --comments '/!/' -m screw_ie8=true -c screw_ie8=true,unused=false -o dist/creditcard.min.js",
     "build:lib": "babel src --out-dir lib",
-    "build:all": "npm run build:lib && npm run build:debug && npm run build:min && npm run build:node",
-    "build:watch": "watchify src/creditCard.js -s CreditCard -t [babelify --loose all] -o dist/browser/creditcard.js -v",
+    "build:all": "npm run build:lib && npm run build:debug && npm run build:min",
+    "build:watch": "watchify src/creditCard.js -s CreditCard -t [babelify --loose all] -o dist/creditcard.js -v",
     "test": "karma start --single-run",
     "test:watch": "karma start --watch",
     "lint": "eslint src specs",
