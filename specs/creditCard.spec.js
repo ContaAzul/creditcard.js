@@ -17,15 +17,15 @@ describe('CreditCard', () => {
 
   describe('#validadeExpiryDate', () => {
     it('should return true with its a VALID date', () => {
-      expect(creditcard.validadeExpiryDate('10', '2020')).toBeTruthy();
+      expect(creditcard.validateExpirationDate('10', '2020')).toBeTruthy();
     });
 
     it('should return true with its a INVALID year', () => {
-      expect(creditcard.validadeExpiryDate('10', '200')).toBeFalsy();
+      expect(creditcard.validateExpirationDate('10', '200')).toBeFalsy();
     });
 
     it('should return true with its a INVALID month', () => {
-      expect(creditcard.validadeExpiryDate('15', '2020')).toBeFalsy();
+      expect(creditcard.validateExpirationDate('15', '2020')).toBeFalsy();
     });
   });
 
@@ -42,17 +42,17 @@ describe('CreditCard', () => {
   describe('#validadeSecuryCode', () => {
     it('should return true when its a VALID security code', () => {
       let securityCode = '100';
-      expect(creditcard.validadeSecuryCode('4112888888881881', securityCode)).toBeTruthy();
+      expect(creditcard.validateSecuryCode('4112888888881881', securityCode)).toBeTruthy();
     });
 
     it('should return true when its a security code of Amex', () => {
       let securityCode = '5000';
-      expect(creditcard.validadeSecuryCode(CREDIT_CARDS.amex, securityCode)).toBeTruthy();
+      expect(creditcard.validateSecuryCode(CREDIT_CARDS.amex, securityCode)).toBeTruthy();
     });
 
     it('should return false when its a INVALID security code', () => {
       let securityCode = '10';
-      expect(creditcard.validadeSecuryCode(CREDIT_CARDS.visa, securityCode)).toBeFalsy();
+      expect(creditcard.validateSecuryCode(CREDIT_CARDS.visa, securityCode)).toBeFalsy();
     });
   });
 
