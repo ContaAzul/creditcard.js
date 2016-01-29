@@ -45,7 +45,7 @@ export default class CreditCard {
     return false;
   }
 
-  validateExpiryDate(month, year) {
+  validateExpirationDate(month, year) {
     let m = month;
     let y = year;
     let yearLength = y.length;

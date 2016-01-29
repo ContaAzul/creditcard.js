@@ -17,15 +17,15 @@ describe('CreditCard', () => {
 
   describe('#validadeExpiryDate', () => {
     it('should return true with its a VALID date', () => {
-      expect(creditcard.validateExpiryDate('10', '2020')).toBeTruthy();
+      expect(creditcard.validateExpirationDate('10', '2020')).toBeTruthy();
     });
 
     it('should return true with its a INVALID year', () => {
-      expect(creditcard.validateExpiryDate('10', '200')).toBeFalsy();
+      expect(creditcard.validateExpirationDate('10', '200')).toBeFalsy();
     });
 
     it('should return true with its a INVALID month', () => {
-      expect(creditcard.validateExpiryDate('15', '2020')).toBeFalsy();
+      expect(creditcard.validateExpirationDate('15', '2020')).toBeFalsy();
     });
   });
 
