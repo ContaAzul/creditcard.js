@@ -1,0 +1,93 @@
+body {
+  font-size: 16px;
+}
+
+h1, h2, h3 {
+  margin-top: 30px;
+  margin-bottom: 14px;
+}
+
+code {
+  font-size: 16px;
+}
+
+/* ==========================================================================
+   Overrides of CSS ContaAzul framwork
+   ========================================================================== */
+
+.table-default {
+  margin-bottom: 44px;
+}
+
+.table-default tbody tr:hover {
+  cursor: auto;
+}
+
+.doc-grid {
+  width: 100%;
+  max-width: 790px;
+  margin: 0 auto;
+}
+
+.box-grouping-header h2 {
+  margin: 0;
+  background: #f1f4f9;
+}
+
+.box-grouping-content,
+.box-grouping  {
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   `.ccjs` is CreditCardJS
+   ========================================================================== */
+
+.ccjs-background {
+  background: #0066cb;
+
+  color: #ffffff;
+}
+
+  .ccjs-background a {
+    color: #ffffff;
+  }
+
+.ccjs-banner {
+  margin-bottom: 44px;
+  padding: 40px 20px;
+
+  text-align: center;
+}
+
+  @media all and (min-width: 620px) {
+     .ccjs-banner {
+       padding: 10% 20px;
+     }
+   }
+
+.ccjs-banner h1 {
+  font-size: 44px;
+}
+
+.ccjs-banner h2 {
+  font-size: 24px;
+}
+
+.ccjs-footer {
+  margin-top: 44px;
+  padding: 34px;
+
+  text-align: center;
+}
+
+  .ccjs-footer p {
+    margin-bottom: 0;
+  }
+
+.ccjs-browser-logo {
+  display: block;
+  max-width: 50px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+}

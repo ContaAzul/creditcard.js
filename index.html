@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>creditcard.js - A simple library for validation of credit cards in JavaScript.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple library for validation of credit cards in JavaScript. Validation of expiry date, secury code and number of credit card. Works on browser and Node.js.">
+
+  <meta property="og:title" content="creditcard.js">
+  <meta property="og:description" content="A simple library for validation of credit cards in JavaScript.">
+  <meta property="og:url" content="https://contaazul.github.io/creditcard.js/">
+
+  <link rel="stylesheet" href="http://cdn.contaazul.com/static/dependencies/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="http://cdn.contaazul.com/static/css/webfonts.css">
+  <link rel="stylesheet" href="http://cdn.contaazul.com/static/css/contaazul.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="vendor/prism/prism.css">
+  <link rel="stylesheet" href="vendor/heart/heart.css">
+</head>
+<body class="color-grey">
+  <section class="ccjs-banner ccjs-background">
+    <h1 class="semi-bold-title">credicard.js</h1>
+    <h2>A simple library for validation of credit cards in JavaScript.</h2>
+    <img src="images/credit-card-logo.jpg" alt="creditcard.js logo">
+  </section>
+
+  <section class="ccjs-content">
+    <div class="container dg-view">
+      <h2 class="semi-bold-title">Install</h2>
+      <p>You can <a href="https://github.com/contaazul/creditcard.js/archive/master.zip">download the ZIP file</a> or use NPM and Bower.</p>
+      <h3>NPM</h3>
+      <pre>
+        <code>
+        npm install --save-dev creditcard.js
+        </code>
+      </pre>
+      <h3>Bower</h3>
+      <pre>
+        <code>
+        bower install --save creditcard.js
+        </code>
+      </pre>
+
+      <h2 class="semi-bold-title">Usage</h2>
+      <p>In browser:</p>
+      <pre class="language-javascript">
+        <code>
+        var obj = new CreditCard();
+        obj.getCreditCardNameByNumber('4539578763621486'); // return 'Visa'
+        </code>
+      </pre>
+
+      <p>In server:</p>
+      <pre class="language-javascript">
+        <code>
+        var creditcard = require('creditcard.js');
+        var obj = new creditcard();
+        obj.getCreditCardNameByNumber('4539578763621486'); // return 'Visa'
+        </code>
+      </pre>
+
+      <h3>Methods</h3>
+
+      <div class="row flat-theme">
+        <div class="span12">
+          <table class="table-default">
+            <thead>
+              <tr>
+                <th class="col1"></th>
+                <th class="col12">Name</th>
+                <th class="col34">Description</th>
+                <th class="col1"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col1"></td>
+                <td class="col12">obj.validateExpirationDate()</td>
+                <td class="col34">Returns a <code>boolean</code>.</td>
+                <td class="col1"></td>
+              </tr>
+              <tr>
+                <td class="col1"></td>
+                <td class="col12">obj.validate()</td>
+                <td class="col34">Returns a <code>boolean</code>.</td>
+                <td class="col1"></td>
+              </tr>
+              <tr>
+                <td class="col1"></td>
+                <td class="col12">obj.validateSecuryCode()</td>
+                <td class="col34">Returns a <code>boolean</code>.</td>
+                <td class="col1"></td>
+              </tr>
+              <tr>
+                <td class="col1"></td>
+                <td class="col12">obj.getCreditCardNameByNumber()</td>
+                <td class="col34">Returns a <code>string</code> with the credit card name.</td>
+                <td class="col1"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="box-grouping span12">
+          <div class="box-grouping-header">
+            <h2>Browser Support</h2>
+          </div>
+          <div class="box-grouping-content">
+            <div class="doc-grid">
+              <div class="row">
+                <div class="span2">
+                  <img src="vendor/browsers/chrome.png" alt="Google Chrome Logo" class="ccjs-browser-logo">
+                  <p class="center">Latest ✔</p>
+                </div>
+                <div class="span2">
+                  <img src="vendor/browsers/firefox.png" alt="Mozilla Firefox Logo" class="ccjs-browser-logo">
+                  <p class="center">Latest ✔</p>
+                </div>
+                <div class="span2">
+                  <img src="vendor/browsers/opera.png" alt="Opera Logo" class="ccjs-browser-logo">
+                  <p class="center">Latest ✔</p>
+                </div>
+                <div class="span2">
+                  <img src="vendor/browsers/ie.png" alt="Internet Explorer Logo" class="ccjs-browser-logo">
+                  <p class="center">9+</p>
+                </div>
+                <div class="span2">
+                  <img src="vendor/browsers/safari.png" alt="Safari Logo" class="ccjs-browser-logo">
+                  <p class="center">8+</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>License</h2>
+      <p>MIT &copy; ContaAzul</p>
+    </div>
+  </section>
+
+  <footer class="ccjs-footer ccjs-background">
+    <p>Created by <a href="https://contaazul.com/carreiras/" title="Conta Azul's Website"
+      target="_blank" class="semi-bold-title">Conta Azul Team</a> with <span class="heartbeat">love</span> for community.</p>
+  </footer>
+
+  <script type="text/javascript" src="vendor/prism/prism.js"></script>
+</body>
