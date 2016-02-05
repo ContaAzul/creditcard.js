@@ -38,8 +38,8 @@ var CreditCard = (function () {
   };
 
   CreditCard.prototype.getCreditCardNameByNumber = function getCreditCardNameByNumber(number) {
-    var INVALID_CARD = 'Credit card is invalid!';
-    if (!this.isValid(number)) return INVALID_CARD;
+    var INVALID_CARD_MESSAGE = 'Credit card is invalid!';
+    if (!this.isValid(number)) return INVALID_CARD_MESSAGE;
 
     var CREDIT_CARD_LIST = this.retrieveCreditCardList();
 
@@ -50,7 +50,7 @@ var CreditCard = (function () {
       if (regex.test(number)) return creditcard.name;
     }
 
-    return INVALID_CARD;
+    return INVALID_CARD_MESSAGE;
   };
 
   CreditCard.prototype.isValidSecuryCode = function isValidSecuryCode(number, code) {
