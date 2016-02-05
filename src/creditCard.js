@@ -16,9 +16,9 @@ export default class CreditCard {
   }
 
   getCreditCardNameByNumber(number) {
-    let isntValidMessage = 'Credit-card isn\'t valid!';
+    let INVALID_CARD = 'Credit card is invalid!';
     if (!this.isValid(number))
-      return isntValidMessage;
+      return INVALID_CARD;
 
     let CREDIT_CARD_LIST = this.retrieveCreditCardList();
 
@@ -30,7 +30,7 @@ export default class CreditCard {
         return creditcard.name;
     }
 
-    return isntValidMessage;
+    return INVALID_CARD;
   }
 
   isValidSecuryCode(number, code) {

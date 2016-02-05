@@ -94,7 +94,7 @@ describe('CreditCard', () => {
 
     it('should return false', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(INVALID_CREDIT_CARD);
-      expect(creditCardName).toBe('Credit-card isn\'t valid!');
+      expect(creditCardName).toBe('Credit card is invalid!');
     });
   });
 });

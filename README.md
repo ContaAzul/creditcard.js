@@ -51,10 +51,10 @@ obj.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 
 | Name | Returns |
 |---|---|
-|`isValid`| `Boolean `|
-|`isValidExpirationDate`| `Boolean `|
-|`isValidSecuryCode`| `Boolean `|
-|`getCreditCardNameByNumber`| `String `|
+|`CreditCard#isValid()`| `Boolean `|
+|`CreditCard#isValidExpirationDate()`| `Boolean `|
+|`CreditCard#isValidSecuryCode()`| `Boolean `|
+|`CreditCard#getCreditCardNameByNumber()`| `String `|
 
 ## Browser support
 
