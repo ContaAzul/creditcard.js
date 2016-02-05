@@ -48,11 +48,11 @@ obj.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 
 ### Methods
 
-#### obj`.validateExpirationDate()`
+#### obj`.validate()`
 
 Returns whether the value is `true` or `false`.
 
-#### obj`.validate()`
+#### obj`.validateExpirationDate()`
 
 Returns whether the value is `true` or `false`.
 

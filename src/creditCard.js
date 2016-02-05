@@ -32,7 +32,7 @@ export default class CreditCard {
     return false;
   }
 
-  validadeSecuryCode(number, code) {
+  validateSecuryCode(number, code) {
     let brand = this.getCreditCardNameByNumber(number);
     let numberLength;
 
@@ -45,7 +45,7 @@ export default class CreditCard {
     return false;
   }
 
-  validadeExpiryDate(month, year) {
+  validateExpirationDate(month, year) {
     let m = month;
     let y = year;
     let yearLength = y.length;

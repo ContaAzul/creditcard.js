@@ -52,7 +52,7 @@ var CreditCard = (function () {
     return false;
   };
 
-  CreditCard.prototype.validadeSecuryCode = function validadeSecuryCode(number, code) {
+  CreditCard.prototype.validateSecuryCode = function validateSecuryCode(number, code) {
     var brand = this.getCreditCardNameByNumber(number);
     var numberLength = undefined;
 
@@ -64,7 +64,7 @@ var CreditCard = (function () {
     return false;
   };
 
-  CreditCard.prototype.validadeExpiryDate = function validadeExpiryDate(month, year) {
+  CreditCard.prototype.validateExpiryDate = function validateExpiryDate(month, year) {
     var m = month;
     var y = year;
     var yearLength = y.length;
