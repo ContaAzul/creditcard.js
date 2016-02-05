@@ -7,7 +7,7 @@ describe('CreditCardList', () => {
 
   describe('#getCreditCardList', () => {
     it('should return a array with cards', () => {
-      let cards = list.getCreditCardList();
+      let cards = list.retrieveCreditCardList();
       expect(cards instanceof Array).toBeTruthy();
     });
   });

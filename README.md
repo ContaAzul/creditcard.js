@@ -46,23 +46,15 @@ var obj = new creditcard();
 obj.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 ```
 
-### Methods
+### Functions
 
-#### obj`.validate()`
 
-Returns whether the value is `true` or `false`.
-
-#### obj`.validateExpirationDate()`
-
-Returns whether the value is `true` or `false`.
-
-#### obj`.validateSecuryCode()`
-
-Returns whether the value is `true` or `false`.
-
-#### obj`.getCreditCardNameByNumber()`
-
-Returns a `String` with the credit card name.
+| Name | Returns |
+|---|---|
+|`isValid`| `Boolean `|
+|`isValidExpirationDate`| `Boolean `|
+|`isValidSecuryCode`| `Boolean `|
+|`getCreditCardNameByNumber`| `String `|
 
 ## Browser support
 
