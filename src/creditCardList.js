@@ -31,7 +31,7 @@ export default class CreditCardList {
     this.list = CREDIT_CARD_LIST;
   }
 
-  getCreditCardList() {
+  retrieveCreditCardList() {
     return this.list;
   }
 }

@@ -7,19 +7,20 @@ export default class CreditCard {
     this.luhn = new Luhn();
   }
 
-  getCreditCardList() {
-    return this.creditcardlist.getCreditCardList();
+  retrieveCreditCardList() {
+    return this.creditcardlist.retrieveCreditCardList();
   }
 
-  validate(number) {
-    return this.luhn.validate(number);
+  isValid(number) {
+    return this.luhn.isValid(number);
   }
 
   getCreditCardNameByNumber(number) {
-    if (!this.validate(number))
-      return false;
+    const INVALID_CARD_MESSAGE = 'Credit card is invalid!';
+    if (!this.isValid(number))
+      return INVALID_CARD_MESSAGE;
 
-    let CREDIT_CARD_LIST = this.getCreditCardList();
+    let CREDIT_CARD_LIST = this.retrieveCreditCardList();
 
     for (let i = 0; i < CREDIT_CARD_LIST.length; i++) {
       let creditcard = CREDIT_CARD_LIST[i];
@@ -29,23 +30,20 @@ export default class CreditCard {
         return creditcard.name;
     }
 
-    return false;
+    return INVALID_CARD_MESSAGE;
   }
 
-  validateSecuryCode(number, code) {
+  isValidSecuryCode(number, code) {
     let brand = this.getCreditCardNameByNumber(number);
     let numberLength;
 
     numberLength = (brand === 'Amex') ? 4 : 3;
     let regex = new RegExp(`[0-9]{${numberLength}}`);
 
-    if (code.length === numberLength && regex.test(code))
-      return true;
-
-    return false;
+    return (code.length === numberLength && regex.test(code));
   }
 
-  validateExpirationDate(month, year) {
+  isValidExpirationDate(month, year) {
     let m = month;
     let y = year;
     let yearLength = y.length;
@@ -59,9 +57,6 @@ export default class CreditCard {
     if (m < 1 || m > 12)
       return false;
 
-    if (y < 1000 || y >= 3000)
-      return false;
-
-    return true;
+    return !(y < 1000 || y >= 3000);
   }
 }

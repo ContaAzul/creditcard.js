@@ -17,7 +17,7 @@ export default class Luhn {
     return sum;
   }
 
-  validate(number) {
+  isValid(number) {
     let regex = new RegExp('/[^0-9-\s]+/');
     let digits = number;
 

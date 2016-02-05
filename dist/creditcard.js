@@ -29,18 +29,19 @@ var CreditCard = (function () {
     this.luhn = new _helpersLuhn2['default']();
   }
 
-  CreditCard.prototype.getCreditCardList = function getCreditCardList() {
-    return this.creditcardlist.getCreditCardList();
+  CreditCard.prototype.retrieveCreditCardList = function retrieveCreditCardList() {
+    return this.creditcardlist.retrieveCreditCardList();
   };
 
-  CreditCard.prototype.validate = function validate(number) {
-    return this.luhn.validate(number);
+  CreditCard.prototype.isValid = function isValid(number) {
+    return this.luhn.isValid(number);
   };
 
   CreditCard.prototype.getCreditCardNameByNumber = function getCreditCardNameByNumber(number) {
-    if (!this.validate(number)) return false;
+    var INVALID_CARD_MESSAGE = 'Credit card is invalid!';
+    if (!this.isValid(number)) return INVALID_CARD_MESSAGE;
 
-    var CREDIT_CARD_LIST = this.getCreditCardList();
+    var CREDIT_CARD_LIST = this.retrieveCreditCardList();
 
     for (var i = 0; i < CREDIT_CARD_LIST.length; i++) {
       var creditcard = CREDIT_CARD_LIST[i];
@@ -49,22 +50,20 @@ var CreditCard = (function () {
       if (regex.test(number)) return creditcard.name;
     }
 
-    return false;
+    return INVALID_CARD_MESSAGE;
   };
 
-  CreditCard.prototype.validateSecuryCode = function validateSecuryCode(number, code) {
+  CreditCard.prototype.isValidSecuryCode = function isValidSecuryCode(number, code) {
     var brand = this.getCreditCardNameByNumber(number);
     var numberLength = undefined;
 
     numberLength = brand === 'Amex' ? 4 : 3;
     var regex = new RegExp('[0-9]{' + numberLength + '}');
 
-    if (code.length === numberLength && regex.test(code)) return true;
-
-    return false;
+    return code.length === numberLength && regex.test(code);
   };
 
-  CreditCard.prototype.validateExpiryDate = function validateExpiryDate(month, year) {
+  CreditCard.prototype.isValidExpirationDate = function isValidExpirationDate(month, year) {
     var m = month;
     var y = year;
     var yearLength = y.length;
@@ -76,9 +75,7 @@ var CreditCard = (function () {
 
     if (m < 1 || m > 12) return false;
 
-    if (y < 1000 || y >= 3000) return false;
-
-    return true;
+    return !(y < 1000 || y >= 3000);
   };
 
   return CreditCard;
@@ -127,7 +124,7 @@ var CreditCardList = (function () {
     this.list = CREDIT_CARD_LIST;
   }
 
-  CreditCardList.prototype.getCreditCardList = function getCreditCardList() {
+  CreditCardList.prototype.retrieveCreditCardList = function retrieveCreditCardList() {
     return this.list;
   };
 
@@ -165,7 +162,7 @@ var Luhn = (function () {
     return sum;
   };
 
-  Luhn.prototype.validate = function validate(number) {
+  Luhn.prototype.isValid = function isValid(number) {
     var regex = new RegExp('/[^0-9-\s]+/');
     var digits = number;
 
