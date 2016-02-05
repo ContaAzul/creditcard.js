@@ -39,6 +39,16 @@ code {
   background-color: #ffffff;
 }
 
+.gh-buttons {
+  width: 335px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.gh-buttons > iframe:first-child {
+  margin-right: 10px;
+}
+
 /* ==========================================================================
    `.ccjs` is CreditCardJS
    ========================================================================== */
