@@ -33,7 +33,7 @@ export default class CreditCard {
     return INVALID_CARD_MESSAGE;
   }
 
-  isValidSecuryCode(number, code) {
+  isSecurityCodeValid(number, code) {
     let brand = this.getCreditCardNameByNumber(number);
     let numberLength;
 
@@ -43,7 +43,7 @@ export default class CreditCard {
     return (code.length === numberLength && regex.test(code));
   }
 
-  isValidExpirationDate(month, year) {
+  isExpirationDateValid(month, year) {
     let m = month;
     let y = year;
     let yearLength = y.length;

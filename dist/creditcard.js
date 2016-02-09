@@ -53,7 +53,7 @@ var CreditCard = (function () {
     return INVALID_CARD_MESSAGE;
   };
 
-  CreditCard.prototype.isValidSecuryCode = function isValidSecuryCode(number, code) {
+  CreditCard.prototype.isSecurityCodeValid = function isSecurityCodeValid(number, code) {
     var brand = this.getCreditCardNameByNumber(number);
     var numberLength = undefined;
 
@@ -63,7 +63,7 @@ var CreditCard = (function () {
     return code.length === numberLength && regex.test(code);
   };
 
-  CreditCard.prototype.isValidExpirationDate = function isValidExpirationDate(month, year) {
+  CreditCard.prototype.isExpirationDateValid = function isExpirationDateValid(month, year) {
     var m = month;
     var y = year;
     var yearLength = y.length;
