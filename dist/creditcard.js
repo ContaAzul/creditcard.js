@@ -53,7 +53,7 @@ var CreditCard = (function () {
     return INVALID_CARD_MESSAGE;
   };
 
-  CreditCard.prototype.isValidSecuryCode = function isValidSecuryCode(number, code) {
+  CreditCard.prototype.isValidSecurityCode = function isValidSecurityCode(number, code) {
     var brand = this.getCreditCardNameByNumber(number);
     var numberLength = undefined;
 

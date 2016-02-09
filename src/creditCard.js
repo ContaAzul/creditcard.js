@@ -33,7 +33,7 @@ export default class CreditCard {
     return INVALID_CARD_MESSAGE;
   }
 
-  isValidSecuryCode(number, code) {
+  isValidSecurityCode(number, code) {
     let brand = this.getCreditCardNameByNumber(number);
     let numberLength;
 

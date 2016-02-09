@@ -39,20 +39,20 @@ describe('CreditCard', () => {
     });
   });
 
-  describe('#validadeSecuryCode', () => {
+  describe('#validadeSecurityCode', () => {
     it('should return true when its a VALID security code', () => {
       let securityCode = '100';
-      expect(creditcard.isValidSecuryCode('4112888888881881', securityCode)).toBeTruthy();
+      expect(creditcard.isValidSecurityCode('4112888888881881', securityCode)).toBeTruthy();
     });
 
     it('should return true when its a security code of Amex', () => {
       let securityCode = '5000';
-      expect(creditcard.isValidSecuryCode(CREDIT_CARDS.amex, securityCode)).toBeTruthy();
+      expect(creditcard.isValidSecurityCode(CREDIT_CARDS.amex, securityCode)).toBeTruthy();
     });
 
     it('should return false when its a INVALID security code', () => {
       let securityCode = '10';
-      expect(creditcard.isValidSecuryCode(CREDIT_CARDS.visa, securityCode)).toBeFalsy();
+      expect(creditcard.isValidSecurityCode(CREDIT_CARDS.visa, securityCode)).toBeFalsy();
     });
   });
 
