@@ -56,7 +56,7 @@ Returns whether the value is `true` or `false`.
 
 Returns whether the value is `true` or `false`.
 
-#### obj`.validadeSecuryCode()`
+#### obj`.validadeSecurityCode()`
 
 Returns whether the value is `true` or `false`.
 
