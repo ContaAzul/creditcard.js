@@ -15,7 +15,7 @@ You can [download the zip file](https://github.com/contaazul/creditcard.js/archi
 ### NPM
 
 ```sh
-$ npm install --save-dev creditcard.js
+$ npm install --save creditcard.js
 ```
 
 ### Bower
