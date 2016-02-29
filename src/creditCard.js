@@ -1,7 +1,7 @@
-import CreditCardList from './creditCardList';
-import Luhn from './helpers/luhn';
+const CreditCardList = require('./creditCardList');
+const Luhn = require('./helpers/luhn');
 
-export default class CreditCard {
+class CreditCard {
   constructor() {
     this.creditcardlist = new CreditCardList();
     this.luhn = new Luhn();
@@ -60,3 +60,5 @@ export default class CreditCard {
     return !(y < 1000 || y >= 3000);
   }
 }
+
+module.exports = CreditCard;
