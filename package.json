@@ -1,6 +1,6 @@
 {
   "name": "creditcard.js",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A simple library for credit-card validation in JavaScript",
   "main": "dist/creditcard.min.js",
   "repository": "ContaAzul/creditcard.js",
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "npm run check && npm run build:debug && npm run build:min",
-    "build:debug": "mkdir -p dist && browserify src/creditCard.js -s CreditCard -t babelify --presets [es2015] -p bannerify --file .banner -o dist/creditcard.js",
+    "build:debug": "mkdir -p dist && browserify src/creditCard.js -s CreditCard -t babelify --presets [es2015] -p [bannerify --file .banner] -o dist/creditcard.js",
     "build:min": "uglifyjs dist/creditcard.js --comments '/!/' -m screw_ie8=true -c screw_ie8=true,unused=false -o dist/creditcard.min.js",
     "build:watch": "watchify src/creditCard.js -s CreditCard -t babelify --presets [es2015] -o dist/creditcard.js -v",
     "test": "karma start --single-run",
