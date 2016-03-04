@@ -1,95 +1,88 @@
-/*!
- * creditcard.js v2.0.1
- * Created by @ContaAzul.
- *
- * Licensed MIT.
- */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.CreditCard = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+var CreditCardList = require('./creditCardList');
+var Luhn = require('./helpers/luhn');
 
-var _creditCardList = require('./creditCardList');
-
-var _creditCardList2 = _interopRequireDefault(_creditCardList);
-
-var _helpersLuhn = require('./helpers/luhn');
-
-var _helpersLuhn2 = _interopRequireDefault(_helpersLuhn);
-
-var CreditCard = (function () {
+var CreditCard = function () {
   function CreditCard() {
     _classCallCheck(this, CreditCard);
 
-    this.creditcardlist = new _creditCardList2['default']();
-    this.luhn = new _helpersLuhn2['default']();
+    this.creditcardlist = new CreditCardList();
+    this.luhn = new Luhn();
   }
 
-  CreditCard.prototype.retrieveCreditCardList = function retrieveCreditCardList() {
-    return this.creditcardlist.retrieveCreditCardList();
-  };
-
-  CreditCard.prototype.isValid = function isValid(number) {
-    return this.luhn.isValid(number);
-  };
-
-  CreditCard.prototype.getCreditCardNameByNumber = function getCreditCardNameByNumber(number) {
-    var INVALID_CARD_MESSAGE = 'Credit card is invalid!';
-    if (!this.isValid(number)) return INVALID_CARD_MESSAGE;
-
-    var CREDIT_CARD_LIST = this.retrieveCreditCardList();
-
-    for (var i = 0; i < CREDIT_CARD_LIST.length; i++) {
-      var creditcard = CREDIT_CARD_LIST[i];
-      var regex = new RegExp(creditcard.regexpFull);
-
-      if (regex.test(number)) return creditcard.name;
+  _createClass(CreditCard, [{
+    key: 'retrieveCreditCardList',
+    value: function retrieveCreditCardList() {
+      return this.creditcardlist.retrieveCreditCardList();
     }
+  }, {
+    key: 'isValid',
+    value: function isValid(number) {
+      return this.luhn.isValid(number);
+    }
+  }, {
+    key: 'getCreditCardNameByNumber',
+    value: function getCreditCardNameByNumber(number) {
+      var INVALID_CARD_MESSAGE = 'Credit card is invalid!';
+      if (!this.isValid(number)) return INVALID_CARD_MESSAGE;
 
-    return INVALID_CARD_MESSAGE;
-  };
+      var CREDIT_CARD_LIST = this.retrieveCreditCardList();
 
-  CreditCard.prototype.isSecurityCodeValid = function isSecurityCodeValid(number, code) {
-    var brand = this.getCreditCardNameByNumber(number);
-    var numberLength = undefined;
+      for (var i = 0; i < CREDIT_CARD_LIST.length; i++) {
+        var creditcard = CREDIT_CARD_LIST[i];
+        var regex = new RegExp(creditcard.regexpFull);
 
-    numberLength = brand === 'Amex' ? 4 : 3;
-    var regex = new RegExp('[0-9]{' + numberLength + '}');
+        if (regex.test(number)) return creditcard.name;
+      }
 
-    return code.length === numberLength && regex.test(code);
-  };
+      return INVALID_CARD_MESSAGE;
+    }
+  }, {
+    key: 'isSecurityCodeValid',
+    value: function isSecurityCodeValid(number, code) {
+      var brand = this.getCreditCardNameByNumber(number);
+      var numberLength = undefined;
 
-  CreditCard.prototype.isExpirationDateValid = function isExpirationDateValid(month, year) {
-    var m = month;
-    var y = year;
-    var yearLength = y.length;
+      numberLength = brand === 'Amex' ? 4 : 3;
+      var regex = new RegExp('[0-9]{' + numberLength + '}');
 
-    if (yearLength < 2 && yearLength > 4) return false;
+      return code.length === numberLength && regex.test(code);
+    }
+  }, {
+    key: 'isExpirationDateValid',
+    value: function isExpirationDateValid(month, year) {
+      var m = month;
+      var y = year;
+      var yearLength = y.length;
 
-    m = parseInt(m, 10);
-    y = parseInt(y, 10);
+      if (yearLength < 2 && yearLength > 4) return false;
 
-    if (m < 1 || m > 12) return false;
+      m = parseInt(m, 10);
+      y = parseInt(y, 10);
 
-    return !(y < 1000 || y >= 3000);
-  };
+      if (m < 1 || m > 12) return false;
+
+      return !(y < 1000 || y >= 3000);
+    }
+  }]);
 
   return CreditCard;
-})();
+}();
 
-exports['default'] = CreditCard;
-module.exports = exports['default'];
+module.exports = CreditCard;
 
 },{"./creditCardList":2,"./helpers/luhn":3}],2:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var CREDIT_CARD_LIST = [{
   name: 'Elo',
@@ -117,68 +110,73 @@ var CREDIT_CARD_LIST = [{
   regexpFull: '^4[0-9]{12}(?:[0-9]{3})?$'
 }];
 
-var CreditCardList = (function () {
+var CreditCardList = function () {
   function CreditCardList() {
     _classCallCheck(this, CreditCardList);
 
     this.list = CREDIT_CARD_LIST;
   }
 
-  CreditCardList.prototype.retrieveCreditCardList = function retrieveCreditCardList() {
-    return this.list;
-  };
+  _createClass(CreditCardList, [{
+    key: 'retrieveCreditCardList',
+    value: function retrieveCreditCardList() {
+      return this.list;
+    }
+  }]);
 
   return CreditCardList;
-})();
+}();
 
-exports['default'] = CreditCardList;
-module.exports = exports['default'];
+module.exports = CreditCardList;
 
 },{}],3:[function(require,module,exports){
 'use strict';
 
-exports.__esModule = true;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Luhn = (function () {
+var Luhn = function () {
   function Luhn() {
     _classCallCheck(this, Luhn);
 
     this.computed = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
   }
 
-  Luhn.prototype._sum = function _sum(number) {
-    var sum = 0;
-    var digit = 0;
-    var i = number.length;
-    var even = true;
+  _createClass(Luhn, [{
+    key: '_sum',
+    value: function _sum(number) {
+      var sum = 0;
+      var digit = 0;
+      var i = number.length;
+      var even = true;
 
-    while (i--) {
-      digit = Number(number[i]);
-      sum += (even = !even) ? this.computed[digit] : digit;
+      while (i--) {
+        digit = Number(number[i]);
+        sum += (even = !even) ? this.computed[digit] : digit;
+      }
+
+      return sum;
     }
+  }, {
+    key: 'isValid',
+    value: function isValid(number) {
+      var regex = new RegExp('/[^0-9-\s]+/');
+      var digits = number;
 
-    return sum;
-  };
+      if (regex.test(digits)) return false;
 
-  Luhn.prototype.isValid = function isValid(number) {
-    var regex = new RegExp('/[^0-9-\s]+/');
-    var digits = number;
+      digits = digits.replace(/\D/g, '');
 
-    if (regex.test(digits)) return false;
-
-    digits = digits.replace(/\D/g, '');
-
-    var sum = this._sum(digits);
-    return sum > 0 && sum % 10 === 0;
-  };
+      var sum = this._sum(digits);
+      return sum > 0 && sum % 10 === 0;
+    }
+  }]);
 
   return Luhn;
-})();
+}();
 
-exports['default'] = Luhn;
-module.exports = exports['default'];
+module.exports = Luhn;
 
 },{}]},{},[1])(1)
 });

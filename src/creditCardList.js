@@ -26,7 +26,7 @@ const CREDIT_CARD_LIST = [
   }
 ];
 
-export default class CreditCardList {
+class CreditCardList {
   constructor() {
     this.list = CREDIT_CARD_LIST;
   }
@@ -35,3 +35,5 @@ export default class CreditCardList {
     return this.list;
   }
 }
+
+module.exports = CreditCardList;
