@@ -48,7 +48,7 @@ class CreditCard {
     let y = year;
     let yearLength = y.length;
 
-    if (yearLength < 2 && yearLength > 4)
+    if (yearLength  != 2 && yearLength != 4)
       return false;
 
     m = parseInt(m, 10);
