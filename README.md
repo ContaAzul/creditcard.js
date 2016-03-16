@@ -64,4 +64,4 @@ obj.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 
 ## License
 
-MIT © Conta Azul
+MIT © ContaAzul
