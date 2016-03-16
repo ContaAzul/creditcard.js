@@ -46,10 +46,6 @@ class CreditCard {
   isExpirationDateValid(month, year) {
     let m = month;
     let y = year;
-    let yearLength = y.length;
-
-    if (yearLength !== 4)
-      return false;
 
     m = parseInt(m, 10);
     y = parseInt(y, 10);
