@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/ContaAzul/creditcard.js.svg)](https://david-dm.org/Semantic-Org/ContaAzul/creditcard.js)
 [![devDependency Status](https://david-dm.org/ContaAzul/creditcard.js/dev-status.svg)](https://david-dm.org/ContaAzul/creditcard.js#info=devDependencies)
 
-> A simple library for credit-card validation in JavaScript
+> A simple credit cards validation library in JavaScript.
 
 <img src="assets/images/credit-card-logo.png" alt="creditcard.js" />
 
@@ -64,4 +64,4 @@ obj.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 
 ## License
 
-MIT © Conta Azul
+MIT © ContaAzul
