@@ -38,9 +38,9 @@ class CreditCard {
     let numberLength;
 
     numberLength = (brand === 'Amex') ? 4 : 3;
-    let regex = new RegExp(`[0-9]{${numberLength}}`);
+    let regex = new RegExp(`^[0-9]{${numberLength}}$`);
 
-    return (code.length === numberLength && regex.test(code));
+    return regex.test(code);
   }
 
   isExpirationDateValid(month, year) {
