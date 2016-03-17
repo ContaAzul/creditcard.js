@@ -1,5 +1,5 @@
 /*!
- * creditcard.js v2.0.2
+ * creditcard.js v2.0.3
  * Created by @ContaAzul.
  *
  * Licensed MIT.
@@ -56,18 +56,15 @@ var CreditCard = function () {
       var numberLength = undefined;
 
       numberLength = brand === 'Amex' ? 4 : 3;
-      var regex = new RegExp('[0-9]{' + numberLength + '}');
+      var regex = new RegExp('^[0-9]{' + numberLength + '}$');
 
-      return code.length === numberLength && regex.test(code);
+      return regex.test(code);
     }
   }, {
     key: 'isExpirationDateValid',
     value: function isExpirationDateValid(month, year) {
       var m = month;
       var y = year;
-      var yearLength = y.length;
-
-      if (yearLength < 2 && yearLength > 4) return false;
 
       m = parseInt(m, 10);
       y = parseInt(y, 10);
