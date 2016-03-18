@@ -53,6 +53,9 @@ class CreditCard {
     if (m < 1 || m > 12)
       return false;
 
+    if (y < 100)
+      y = y + 2000;
+
     return !(y < 1000 || y >= 3000);
   }
 }
