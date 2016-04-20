@@ -44,7 +44,7 @@ In the server:
 
 ```javascript
 var creditcard = require('creditcard.js');
-var obj = new CreditCard();
+var obj = new creditcard();
 obj.isValid('4916108926268679'); // returns true
 obj.isExpirationDateValid('02', '2020'); // returns true
 obj.isSecurityCodeValid('4556603578296676', '250'); // returns true
