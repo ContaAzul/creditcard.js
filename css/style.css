@@ -56,7 +56,6 @@ code {
 .ccjs-background {
   background: #f1f4f9;
   border-bottom: 1px solid #dddddd;
-
   color: #ffffff;
 }
 
@@ -67,7 +66,6 @@ code {
 .ccjs-banner {
   margin-bottom: 44px;
   padding: 40px 20px;
-
   text-align: center;
 }
 
@@ -96,9 +94,7 @@ code {
 .ccjs-footer {
   margin-top: 44px;
   padding: 34px;
-
   border-bottom: 1px solid #dddddd;
-
   color: #9fa2a7;
   text-align: center;
 }
@@ -110,7 +106,6 @@ code {
   .ccjs-footer p {
     margin-bottom: 0;
   }
-
 
 .ccjs-browser-logo {
   display: block;
