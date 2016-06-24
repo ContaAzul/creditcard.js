@@ -54,7 +54,8 @@ code {
    ========================================================================== */
 
 .ccjs-background {
-  background: #0066cb;
+  background: #f1f4f9;
+  border-bottom: 1px solid #dddddd;
 
   color: #ffffff;
 }
@@ -77,23 +78,39 @@ code {
    }
 
 .ccjs-banner h1 {
+  color: #3e84ca;
   font-size: 44px;
 }
 
 .ccjs-banner h2 {
+  color: #9fa2a7;
   font-size: 24px;
+}
+
+.ccjs-banner-image {
+  display: block;
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 .ccjs-footer {
   margin-top: 44px;
   padding: 34px;
 
+  border-bottom: 1px solid #dddddd;
+
+  color: #9fa2a7;
   text-align: center;
 }
+
+  .ccjs-footer a {
+    color: #385a7b;
+  }
 
   .ccjs-footer p {
     margin-bottom: 0;
   }
+
 
 .ccjs-browser-logo {
   display: block;
