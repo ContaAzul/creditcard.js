@@ -2,6 +2,9 @@
   "ecmaFeatures": {
     "modules": true
   },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "env": {
     "es6": true,
     "browser": true,
@@ -45,7 +48,7 @@
     "one-var": [2, "never"],
     "quotes": [2, "single"],
     "semi": [2, "always"],
-    "space-after-keywords": 2,
+    "keyword-spacing": 2,
     "space-before-function-paren": [2, "never"],
     "space-in-parens": [2, "never"]
   }
