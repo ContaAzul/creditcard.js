@@ -53,7 +53,7 @@ var CreditCard = function () {
     key: 'isSecurityCodeValid',
     value: function isSecurityCodeValid(number, code) {
       var brand = this.getCreditCardNameByNumber(number);
-      var numberLength = undefined;
+      var numberLength = void 0;
 
       numberLength = brand === 'Amex' ? 4 : 3;
       var regex = new RegExp('^[0-9]{' + numberLength + '}$');
