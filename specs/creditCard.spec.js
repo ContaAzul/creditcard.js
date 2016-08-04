@@ -27,10 +27,10 @@ describe('CreditCard', () => {
     it('should return true with its a INVALID month', () => {
       expect(creditcard.isExpirationDateValid('15', '2020')).toBeFalsy();
     });
-    
+
     it('should return false with empty month or year', () => {
       expect(creditcard.isExpirationDateValid('', '')).toBeFalsy();
-    });    
+    });
   });
 
   describe('#validadeCreditCard', () => {

@@ -49,7 +49,7 @@ class CreditCard {
 
     m = parseInt(m, 10);
     y = parseInt(y, 10);
-    
+
     if (isNaN(m) || isNaN(y))
       return false;
 
