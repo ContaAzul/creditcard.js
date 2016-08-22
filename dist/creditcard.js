@@ -1,5 +1,5 @@
 /*!
- * creditcard.js v2.0.3
+ * creditcard.js v2.1.0
  * Created by @ContaAzul.
  *
  * Licensed MIT.
@@ -53,7 +53,7 @@ var CreditCard = function () {
     key: 'isSecurityCodeValid',
     value: function isSecurityCodeValid(number, code) {
       var brand = this.getCreditCardNameByNumber(number);
-      var numberLength = undefined;
+      var numberLength = void 0;
 
       numberLength = brand === 'Amex' ? 4 : 3;
       var regex = new RegExp('^[0-9]{' + numberLength + '}$');
@@ -68,6 +68,8 @@ var CreditCard = function () {
 
       m = parseInt(m, 10);
       y = parseInt(y, 10);
+
+      if (isNaN(m) || isNaN(y)) return false;
 
       if (m < 1 || m > 12) return false;
 
@@ -107,7 +109,7 @@ var CREDIT_CARD_LIST = [{
   regexpFull: '^50[0-9]{14,17}$'
 }, {
   name: 'Mastercard',
-  regexpFull: '^5[1-5][0-9]{14}$'
+  regexpFull: '^(5[1-5][0-9]{14}|2221[0-9]{12}|222[2-9][0-9]{12}|22[3-9][0-9]{13}|2[3-6][0-9]{14}|27[01][0-9]{13}|2720[0-9]{12})$'
 }, {
   name: 'Visa',
   regexpFull: '^4[0-9]{12}(?:[0-9]{3})?$'
