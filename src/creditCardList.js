@@ -15,6 +15,9 @@ const CREDIT_CARD_LIST = [
     name: 'Amex',
     regexpFull: '^3[47][0-9]{13}$'
   }, {
+    name: 'Maestro',
+    regexpFull: '^(5018|5020|5038|6304|6759|6761|6763)[0-9]{8,15}$'
+  }, {
     name: 'Aura',
     regexpFull: '^50[0-9]{14,17}$'
   }, {
@@ -26,9 +29,6 @@ const CREDIT_CARD_LIST = [
   }, {
     name: 'Visa',
     regexpFull: '^4[0-9]{12}(?:[0-9]{3})?$'
-  }, {
-    name: 'Maestro',
-    regexpFull: '^(50|56|57|58|59|60|61|62|63|64|65|66|67|68|69)\\d{12,19}$'
   }
 ];
 
