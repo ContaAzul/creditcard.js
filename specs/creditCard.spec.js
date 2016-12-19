@@ -11,7 +11,9 @@ describe('CreditCard', () => {
       elo: '5041756758046020',
       amex: '373257135458763',
       aura: '5078601870000127985',
-      hiper: '6062825303833679'
+      hiper: '6062825303833679',
+      visaElectron: '4175006728543479',
+      maestro: '6759410267373364'
     };
   });
 
@@ -94,6 +96,16 @@ describe('CreditCard', () => {
     it('should return the name of Hipercard', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.hiper);
       expect(creditCardName).toBe('Hipercard');
+    });
+
+    it('should return the name of VisaElectron', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.visaElectron);
+      expect(creditCardName).toBe('VisaElectron');
+    });
+
+    it('should return the name of Maestro', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.maestro);
+      expect(creditCardName).toBe('Maestro');
     });
 
     it('should return false', () => {
