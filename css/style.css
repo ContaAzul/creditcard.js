@@ -29,6 +29,19 @@ code {
   margin: 0 auto;
 }
 
+.box-grouping {
+	position: relative;
+	display: inline-block;
+	border: solid 1px gray;
+	border-radius: 4px;
+}
+.box-grouping-header {
+	margin: 0;
+	padding: 20px;
+	background-color: white;
+	border-bottom: solid 1px gray;
+}
+
 .box-grouping-header h2 {
   margin: 0;
   background: #f1f4f9;
