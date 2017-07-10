@@ -17,8 +17,6 @@ class CreditCard {
 
   getCreditCardNameByNumber(number) {
     const INVALID_CARD_MESSAGE = 'Credit card is invalid!';
-    if (!this.isValid(number))
-      return INVALID_CARD_MESSAGE;
 
     let CREDIT_CARD_LIST = this.retrieveCreditCardList();
 
