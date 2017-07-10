@@ -1,5 +1,5 @@
 /*!
- * creditcard.js v2.1.0
+ * creditcard.js v2.1.1
  * Created by @ContaAzul.
  *
  * Licensed MIT.
