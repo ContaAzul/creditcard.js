@@ -43,20 +43,23 @@ class CreditCard {
     return regex.test(code);
   }
 
-  isExpirationDateValid(month, year) {
-    let m = month;
-    let y = year;
+  isExpirationDateValid(paramMonth, paramYearn) {
+    const month = parseInt(paramMonth, 10);
+    const year = parseInt(paramYearn, 10);
 
-    m = parseInt(m, 10);
-    y = parseInt(y, 10);
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth() + 1;
 
-    if (isNaN(m) || isNaN(y))
+    if (isNaN(month) || isNaN(year))
       return false;
 
-    if (m < 1 || m > 12)
+    if (year === currentYear && month < currentMonth)
       return false;
 
-    return !(y < 1000 || y >= 3000);
+    if (month < 1 || month > 12)
+      return false;
+
+    return !(year < 1000 || year >= 3000);
   }
 }
 
