@@ -1,5 +1,5 @@
 /*!
- * creditcard.js v2.1.0
+ * creditcard.js v2.1.1
  * Created by @ContaAzul.
  *
  * Licensed MIT.
@@ -36,7 +36,6 @@ var CreditCard = function () {
     key: 'getCreditCardNameByNumber',
     value: function getCreditCardNameByNumber(number) {
       var INVALID_CARD_MESSAGE = 'Credit card is invalid!';
-      if (!this.isValid(number)) return INVALID_CARD_MESSAGE;
 
       var CREDIT_CARD_LIST = this.retrieveCreditCardList();
 
