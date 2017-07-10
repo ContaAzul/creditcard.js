@@ -16,6 +16,13 @@ describe('CreditCard', () => {
   });
 
   describe('#validadeExpiryDate', () => {
+    beforeEach(() => {
+      jasmine.clock().install();
+      jasmine.clock().mockDate(new Date(2017, 6, 10));
+    });
+
+    afterEach(() => jasmine.clock().uninstall());
+
     it('should return true with its a VALID date', () => {
       expect(creditcard.isExpirationDateValid('10', '2020')).toBeTruthy();
     });
@@ -30,6 +37,10 @@ describe('CreditCard', () => {
 
     it('should return false with empty month or year', () => {
       expect(creditcard.isExpirationDateValid('', '')).toBeFalsy();
+    });
+
+    it('should return false when month is past', () => {
+      expect(creditcard.isExpirationDateValid('01', '2017')).toBeFalsy();
     });
   });
 
