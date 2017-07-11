@@ -1,5 +1,5 @@
 /*!
- * creditcard.js v2.1.0
+ * creditcard.js v2.1.1
  * Created by @ContaAzul.
  *
  * Licensed MIT.
@@ -36,7 +36,6 @@ var CreditCard = function () {
     key: 'getCreditCardNameByNumber',
     value: function getCreditCardNameByNumber(number) {
       var INVALID_CARD_MESSAGE = 'Credit card is invalid!';
-      if (!this.isValid(number)) return INVALID_CARD_MESSAGE;
 
       var CREDIT_CARD_LIST = this.retrieveCreditCardList();
 
@@ -62,18 +61,20 @@ var CreditCard = function () {
     }
   }, {
     key: 'isExpirationDateValid',
-    value: function isExpirationDateValid(month, year) {
-      var m = month;
-      var y = year;
+    value: function isExpirationDateValid(paramMonth, paramYearn) {
+      var month = parseInt(paramMonth, 10);
+      var year = parseInt(paramYearn, 10);
 
-      m = parseInt(m, 10);
-      y = parseInt(y, 10);
+      var currentYear = new Date().getFullYear();
+      var currentMonth = new Date().getMonth() + 1;
 
-      if (isNaN(m) || isNaN(y)) return false;
+      if (isNaN(month) || isNaN(year)) return false;
 
-      if (m < 1 || m > 12) return false;
+      if (year === currentYear && month < currentMonth) return false;
 
-      return !(y < 1000 || y >= 3000);
+      if (month < 1 || month > 12) return false;
+
+      return !(year < 1000 || year >= 3000);
     }
   }]);
 
