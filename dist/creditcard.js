@@ -1,5 +1,5 @@
 /*!
- * creditcard.js v2.1.1
+ * creditcard.js v2.1.2
  * Created by @ContaAzul.
  *
  * Licensed MIT.
@@ -98,7 +98,7 @@ var CREDIT_CARD_LIST = [{
   regexpFull: '^3(?:0[0-5]|[68][0-9])[0-9]{11}$'
 }, {
   name: 'Discover',
-  regexpFull: '^6(?:011|5[0-9]{2})[0-9]{12}$'
+  regexpFull: '^6(?:011|5[0-9]{2}|4[4-9][0-9]{1}|(22(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[01][0-9]|92[0-5]$)[0-9]{10}$))[0-9]{12}$'
 }, {
   name: 'Hipercard',
   regexpFull: '^(38[0-9]{17}|60[0-9]{14})$'
