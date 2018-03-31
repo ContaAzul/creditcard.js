@@ -1,20 +1,18 @@
 import CreditCard from '../src/creditCard.js';
 
 describe('CreditCard', () => {
-  beforeEach(() => {
-    global.creditcard = new CreditCard();
-    global.INVALID_CREDIT_CARD = '00000';
-    global.CREDIT_CARDS = {
-      visa: '4539578763621486',
-      master: '5369835519963014',
-      diners: '30346836403940',
-      elo: '5041756758046020',
-      amex: '373257135458763',
-      aura: '5078601870000127985',
-      hiper: '6062825303833679',
-      visaMask: '4532000000000000'
-    };
-  });
+  const creditcard = new CreditCard();
+  const INVALID_CREDIT_CARD = '00000';
+  const CREDIT_CARDS = {
+    visa: '4539578763621486',
+    master: '5369835519963014',
+    diners: '30346836403940',
+    elo: '5041756758046020',
+    amex: '373257135458763',
+    aura: '5078601870000127985',
+    hiper: '6062825303833679',
+    visaMask: '4532000000000000'
+  };
 
   describe('#validadeExpiryDate', () => {
     beforeEach(() => {
