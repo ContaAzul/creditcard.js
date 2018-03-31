@@ -36,4 +36,4 @@ class CreditCardList {
   }
 }
 
-module.exports = CreditCardList;
+export default CreditCardList;

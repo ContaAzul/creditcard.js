@@ -1,5 +1,5 @@
-const CreditCardList = require('./creditCardList');
-const Luhn = require('./helpers/luhn');
+import CreditCardList from './creditCardList';
+import Luhn from './helpers/luhn';
 
 class CreditCard {
   constructor() {
@@ -61,4 +61,4 @@ class CreditCard {
   }
 }
 
-module.exports = CreditCard;
+export default CreditCard;
