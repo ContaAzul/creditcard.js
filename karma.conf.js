@@ -1,7 +1,7 @@
 module.exports = function(config) {
   config.set({
     basePath: '',
-    frameworks: ['browserify', 'jasmine'],
+    frameworks: ['jasmine'],
     files: [
       'src/**/*.js',
       'specs/**/*.js'
@@ -11,8 +11,8 @@ module.exports = function(config) {
       'dist'
     ],
     preprocessors: {
-      'src/**/*.js': ['browserify'],
-      'specs/**/*.js': ['browserify']
+      'src/**/*.js': ['rollup'],
+      'specs/**/*.js': ['rollup']
     },
     reporters: ['progress'],
     port: 9876,
@@ -22,9 +22,13 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
     singleRun: false,
     concurrency: Infinity,
-    browserify: {
-      debug: true,
-      transform: ['babelify']
+    rollupPreprocessor: {
+      plugins: [require('rollup-plugin-babel')()],
+      output: {
+        format: 'iife',
+        name: 'CreditCard',
+        sourcemap: 'inline'
+      }
     }
   })
 }

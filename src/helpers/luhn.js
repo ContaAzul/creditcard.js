@@ -31,4 +31,4 @@ class Luhn {
   }
 }
 
-module.exports = Luhn;
+export default Luhn;

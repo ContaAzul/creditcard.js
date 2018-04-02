@@ -1,9 +1,7 @@
 import Luhn from '../../src/helpers/luhn.js';
 
 describe('Luhn', () => {
-  beforeEach(() => {
-    global.luhn = new Luhn();
-  });
+  const luhn = new Luhn();
 
   describe('#validate', () => {
     it('should return true when its a VALID credit card number', () => {
