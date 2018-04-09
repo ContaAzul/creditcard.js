@@ -12,7 +12,8 @@ describe('CreditCard', () => {
       amex: '373257135458763',
       aura: '5078601870000127985',
       hiper: '6062825303833679',
-      visaMask: '4532000000000000'
+      visaMask: '4532000000000000',
+      enRoute: '214923550339795'
     };
   });
 
@@ -43,6 +44,7 @@ describe('CreditCard', () => {
     it('should return false when month is past', () => {
       expect(creditcard.isExpirationDateValid('01', '2017')).toBeFalsy();
     });
+    
   });
 
   describe('#validadeCreditCard', () => {
@@ -52,6 +54,20 @@ describe('CreditCard', () => {
 
     it('should return false with its a VALID credit card', () => {
       expect(creditcard.isValid(INVALID_CREDIT_CARD)).toBeFalsy();
+    });
+    
+    it('should return true with its a VALID credit card but not accept list cards', () => {
+      expect(creditcard.isValid(CREDIT_CARDS.enRoute)).toBeTruthy();
+    });
+  });
+
+  describe('#validadeCreditCardAndAccept', () => {
+    it('should return true with its a VALID credit card', () => {
+      expect(creditcard.isValidAndAccept(CREDIT_CARDS.visa)).toBeTruthy();
+    });
+
+    it('should return false with its a VALID and Accept credit card', () => {
+      expect(creditcard.isValidAndAccept(CREDIT_CARDS.enRoute)).toBeFalsy();
     });
   });
 
@@ -76,36 +92,57 @@ describe('CreditCard', () => {
     it('should return the name of Amex', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.amex);
       expect(creditCardName).toBe('Amex');
+      expect(creditcard.getCreditCardNameByNumber('340962711400861')).toBe('Amex');
+      expect(creditcard.getCreditCardNameByNumber('346553')).toBe('Amex');
+    });
+
+    it('should return the name of Discover', () => {
+      expect(creditcard.getCreditCardNameByNumber('6011458311165686')).toBe('Discover');
+      expect(creditcard.getCreditCardNameByNumber('601163')).toBe('Discover');
     });
 
     it('should return the name of Mastercard', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.master);
       expect(creditCardName).toBe('Mastercard');
+      expect(creditcard.getCreditCardNameByNumber('5269376583674915')).toBe('Mastercard');
+      expect(creditcard.getCreditCardNameByNumber('529280')).toBe('Mastercard');
     });
 
     it('should return the name of Visa', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.visa);
       expect(creditCardName).toBe('Visa');
+      expect(creditcard.getCreditCardNameByNumber('4539578763621486')).toBe('Visa');
+      expect(creditcard.getCreditCardNameByNumber('453957')).toBe('Visa');
+      expect(creditcard.getCreditCardNameByNumber('4539904805044')).toBe('Visa');
+      expect(creditcard.getCreditCardNameByNumber('448507')).toBe('Visa');
     });
 
     it('should return the name of Diners', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.diners);
       expect(creditCardName).toBe('Diners');
+      expect(creditcard.getCreditCardNameByNumber('30158921324836')).toBe('Diners');
+      expect(creditcard.getCreditCardNameByNumber('300312')).toBe('Diners');
     });
 
     it('should return the name of Elo', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.elo);
       expect(creditCardName).toBe('Elo');
+      expect(creditcard.getCreditCardNameByNumber('4514163016464478')).toBe('Elo');
+      expect(creditcard.getCreditCardNameByNumber('4389357')).toBe('Elo');
     });
 
     it('should return the name of Aura', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.aura);
       expect(creditCardName).toBe('Aura');
+      expect(creditcard.getCreditCardNameByNumber('5078601870000127985')).toBe('Aura');
+      expect(creditcard.getCreditCardNameByNumber('507860')).toBe('Aura');
     });
 
     it('should return the name of Hipercard', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.hiper);
       expect(creditCardName).toBe('Hipercard');
+      expect(creditcard.getCreditCardNameByNumber('6062823583463044')).toBe('Hipercard');
+      expect(creditcard.getCreditCardNameByNumber('606282')).toBe('Hipercard');
     });
 
     it('should return valid name for mask number', () => {
@@ -113,9 +150,17 @@ describe('CreditCard', () => {
       expect(creditCardName).toBe('Visa');
     });
 
-    it('should return false', () => {
+    it('should return empty', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(INVALID_CREDIT_CARD);
+      expect(creditCardName).toBe('');
+      expect(creditcard.getCreditCardNameByNumber()).toBe('');
+      expect(creditcard.getCreditCardNameByNumber(123)).toBe('');
+    });
+
+    it('should return invalid', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(123654);
       expect(creditCardName).toBe('Credit card is invalid!');
     });
+
   });
 });

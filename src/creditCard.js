@@ -3,61 +3,93 @@ const Luhn = require('./helpers/luhn');
 
 class CreditCard {
   constructor() {
-    this.creditcardlist = new CreditCardList();
     this.luhn = new Luhn();
   }
 
-  retrieveCreditCardList() {
-    return this.creditcardlist.retrieveCreditCardList();
-  }
+  _getNameCard(number, partial){
+    const INVALID_CARD_MESSAGE = 'Credit card is invalid!',
+          TOTAL_LIST_CARDS = CreditCardList.count(),
+          TYPE_REGEX = partial ? 'regexPartial' : 'regexpFull';
 
-  isValid(number) {
-    return this.luhn.isValid(number);
-  }
+    for (let i = 0; i < TOTAL_LIST_CARDS; i++) {
+      let creditcard = CreditCardList.getItemByIndex(i);
+      let regex = new RegExp(creditcard[TYPE_REGEX]);
 
-  getCreditCardNameByNumber(number) {
-    const INVALID_CARD_MESSAGE = 'Credit card is invalid!';
-
-    let CREDIT_CARD_LIST = this.retrieveCreditCardList();
-
-    for (let i = 0; i < CREDIT_CARD_LIST.length; i++) {
-      let creditcard = CREDIT_CARD_LIST[i];
-      let regex = new RegExp(creditcard.regexpFull);
-
-      if (regex.test(number))
+      if (regex.test(number)) {
         return creditcard.name;
+      }
     }
 
     return INVALID_CARD_MESSAGE;
   }
 
-  isSecurityCodeValid(number, code) {
-    let brand = this.getCreditCardNameByNumber(number);
-    let numberLength;
+  checkValue(value) {
+    if(typeof value === 'number') {
+      return value.toString();
+    } else if(typeof value === 'string') {
+      return value.replace(/\D/, '');
+    } else {
+      return '';
+    }
+  }
 
+  getCreditCardNameByNumber(number) {
+    let _number = null;
+    _number = this.checkValue(number);
+    if(!_number.length || _number.length < 6) {
+      return '';
+    }
+    return this._getNameCard(_number, true);
+  }
+
+  isValidAndAccept(number){
+    let _number = this.checkValue(number),
+        _name = this._getNameCard(_number);
+    return this.luhn.isValid(_number) && _name.indexOf('invalid') < 0;
+  }
+
+  isValid(number) {
+    let _number = this.checkValue(number);
+    return this.luhn.isValid(_number);
+  }
+
+  isSecurityCodeValid(number, code) {
+    let brand = null,
+        numberLength = null,
+        _code = null,
+        _number = null;
+
+    _code = this.checkValue(code);
+    _number = this.checkValue(number);
+
+    brand = this.getCreditCardNameByNumber(_number);
     numberLength = (brand === 'Amex') ? 4 : 3;
     let regex = new RegExp(`^[0-9]{${numberLength}}$`);
 
-    return regex.test(code);
+    return regex.test(_code);
   }
 
   isExpirationDateValid(paramMonth, paramYearn) {
-    const month = parseInt(paramMonth, 10);
-    const year = parseInt(paramYearn, 10);
+    const date = new Date(),
+          month = parseInt(paramMonth, 10),
+          year = parseInt(paramYearn, 10),
+          currentYear = date.getFullYear(),
+          currentMonth = date.getMonth() + 1,
+          yearLimit = currentYear + 8; 
 
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1;
-
-    if (isNaN(month) || isNaN(year))
+    if (isNaN(month) || isNaN(year)){
       return false;
+    }
 
-    if (year === currentYear && month < currentMonth)
+    if (year === currentYear && month < currentMonth){
       return false;
+    }
 
-    if (month < 1 || month > 12)
+    if (month < 1 || month > 12) {
       return false;
+    }
 
-    return !(year < 1000 || year >= 3000);
+    return !(year < currentYear || year > yearLimit);
   }
 }
 
