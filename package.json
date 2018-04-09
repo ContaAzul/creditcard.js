@@ -1,6 +1,6 @@
 {
   "name": "creditcard.js",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "A simple library for credit-card validation in JavaScript",
   "main": "dist/creditcard.min.js",
   "repository": "ContaAzul/creditcard.js",
