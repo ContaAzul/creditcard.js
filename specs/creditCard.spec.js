@@ -44,7 +44,7 @@ describe('CreditCard', () => {
     it('should return false when month is past', () => {
       expect(creditcard.isExpirationDateValid('01', '2017')).toBeFalsy();
     });
-    
+
   });
 
   describe('#validadeCreditCard', () => {
@@ -55,7 +55,7 @@ describe('CreditCard', () => {
     it('should return false with its a VALID credit card', () => {
       expect(creditcard.isValid(INVALID_CREDIT_CARD)).toBeFalsy();
     });
-    
+
     it('should return true with its a VALID credit card but not accept list cards', () => {
       expect(creditcard.isValid(CREDIT_CARDS.enRoute)).toBeTruthy();
     });

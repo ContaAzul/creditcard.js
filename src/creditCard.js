@@ -7,9 +7,9 @@ class CreditCard {
   }
 
   _getNameCard(number, partial){
-    const INVALID_CARD_MESSAGE = 'Credit card is invalid!',
-          TOTAL_LIST_CARDS = CreditCardList.count(),
-          TYPE_REGEX = partial ? 'regexPartial' : 'regexpFull';
+    const INVALID_CARD_MESSAGE = 'Credit card is invalid!';
+    const TOTAL_LIST_CARDS = CreditCardList.count();
+    const TYPE_REGEX = partial ? 'regexPartial' : 'regexpFull';
 
     for (let i = 0; i < TOTAL_LIST_CARDS; i++) {
       let creditcard = CreditCardList.getItemByIndex(i);
@@ -24,9 +24,9 @@ class CreditCard {
   }
 
   checkValue(value) {
-    if(typeof value === 'number') {
+    if (typeof value === 'number') {
       return value.toString();
-    } else if(typeof value === 'string') {
+    } else if (typeof value === 'string') {
       return value.replace(/\D/, '');
     } else {
       return '';
@@ -36,15 +36,15 @@ class CreditCard {
   getCreditCardNameByNumber(number) {
     let _number = null;
     _number = this.checkValue(number);
-    if(!_number.length || _number.length < 6) {
+    if (!_number.length || _number.length < 6) {
       return '';
     }
     return this._getNameCard(_number, true);
   }
 
   isValidAndAccept(number){
-    let _number = this.checkValue(number),
-        _name = this._getNameCard(_number);
+    let _number = this.checkValue(number);
+    let _name = this._getNameCard(_number);
     return this.luhn.isValid(_number) && _name.indexOf('invalid') < 0;
   }
 
@@ -54,10 +54,10 @@ class CreditCard {
   }
 
   isSecurityCodeValid(number, code) {
-    let brand = null,
-        numberLength = null,
-        _code = null,
-        _number = null;
+    let brand = null;
+    let numberLength = null;
+    let _code = null;
+    let _number = null;
 
     _code = this.checkValue(code);
     _number = this.checkValue(number);
@@ -70,12 +70,12 @@ class CreditCard {
   }
 
   isExpirationDateValid(paramMonth, paramYearn) {
-    const date = new Date(),
-          month = parseInt(paramMonth, 10),
-          year = parseInt(paramYearn, 10),
-          currentYear = date.getFullYear(),
-          currentMonth = date.getMonth() + 1,
-          yearLimit = currentYear + 8; 
+    const date = new Date();
+    const month = parseInt(paramMonth, 10);
+    const year = parseInt(paramYearn, 10);
+    const currentYear = date.getFullYear();
+    const currentMonth = date.getMonth() + 1;
+    const yearLimit = currentYear + 8;
 
     if (isNaN(month) || isNaN(year)){
       return false;

@@ -26,7 +26,7 @@
     "eol-last": 2,
     "eqeqeq": 2,
     "indent": [2, 2],
-    "linebreak-style": [2, "unix", "windows"],
+    "linebreak-style": [2, "windows"],
     "max-nested-callbacks": [2, 3],
     "no-dupe-keys": 2,
     "no-eq-null": 2,

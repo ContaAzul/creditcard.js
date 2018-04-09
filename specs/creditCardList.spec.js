@@ -12,13 +12,13 @@ describe('CreditCardList', () => {
     });
   });
 
-  describe('#count', function () {
+  describe('#count', () => {
     it('should the list is filled', () => {
       expect(list.count()).toBeGreaterThanOrEqual(8);
     });
   });
 
-  describe('#getItemByIndex', function () {
+  describe('#getItemByIndex', () => {
     it('must ensure that you are returning an item', () => {
       let item = list.getItemByIndex(2);
       expect(item).toBeDefined();
@@ -28,5 +28,5 @@ describe('CreditCardList', () => {
     it('must guarantee that it returns null when it has no item', () => {
       expect(list.getItemByIndex(10)).toBeNull();
     });
-  })
+  });
 });
