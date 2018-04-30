@@ -6,8 +6,7 @@
     "es6": true,
     "browser": true,
     "node": true,
-    "jasmine": true,
-    "es6": true
+    "jasmine": true
   },
   "globals": {
     "require": true,
