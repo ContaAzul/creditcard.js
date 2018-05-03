@@ -8,7 +8,7 @@
 
 ## Install
 
-You can [download the zip file](https://github.com/contaazul/creditcard.js/archive/master.zip) or use NPM or Yarn.
+Creditcard.js is available as the package on NPM. You can install through npm or yarn:
 
 ### NPM
 
