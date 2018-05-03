@@ -1,5 +1,5 @@
-### Qual é a mudança?
+### What is the change?
 
-### Por que fazer essa alteração?
+### Why make this change?
 
-### Plano de teste
+### Test plan

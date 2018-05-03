@@ -1,9 +1,9 @@
-**Deseja solicitar um recurso ou relatar um bug ?**
+**Want to request a feature or report a bug?**
 
-**Qual é o comportamento atual?**
+**What is the current behavior?**
 
-**Se o comportamento atual for um bug, forneça as etapas para reproduzir e, se possível, uma demonstração mínima do problema via https://jsfiddle.net ou similar (modelo: https://jsfiddle.net/).**
+**If the current behavior is a bug, provide the steps to reproduce and, if possible, a minimal demonstration of the problem via https://jsfiddle.net or similar (modelo: https://jsfiddle.net/).**
 
-**Qual é o comportamento esperado?**
+**What is the expected behavior?**
 
-**Qual versão do creditcard.js e qual navegador / OS são afetados por esse problema? Isso funcionou em versões anteriores do creditcard.js?**
+**Which version of creditcard.js and which browser / OS are affected by this issue? This worked on previous versions of creditcard.js?**
