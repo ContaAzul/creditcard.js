@@ -22,9 +22,7 @@ class CreditCard {
 
     for (let i = 0; i < CREDIT_CARD_LIST.length; i++) {
       let creditcard = CREDIT_CARD_LIST[i];
-      let regex = new RegExp(creditcard.regexpFull);
-
-      if (regex.test(number))
+      if (creditcard.regexpFull.test(number))
         return creditcard.name;
     }
 
