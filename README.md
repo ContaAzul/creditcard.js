@@ -8,7 +8,7 @@
 
 ## Install
 
-Creditcard.js is available as the package on NPM. You can install through npm or yarn:
+Creditcard.js available as a NPM package. You can install through npm or yarn:
 
 ### NPM
 
