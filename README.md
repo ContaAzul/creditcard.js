@@ -8,7 +8,7 @@
 
 ## Install
 
-You can [download the zip file](https://github.com/contaazul/creditcard.js/archive/master.zip) or use NPM and Bower.
+Creditcard.js available as a NPM package. You can install through npm or yarn:
 
 ### NPM
 
@@ -16,10 +16,10 @@ You can [download the zip file](https://github.com/contaazul/creditcard.js/archi
 $ npm install --save creditcard.js
 ```
 
-### Bower
+### Yarn
 
 ```sh
-$ bower install creditcard.js --save
+$ yarn add creditcard.js
 ```
 
 ## Usage
