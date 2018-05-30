@@ -5,3 +5,5 @@ before_script:
   - npm install
 script:
   - npm run check
+after_success:
+  - npm run cov:publish

@@ -17,7 +17,7 @@
     "test:watch": "npm run test -- --watch",
     "cov": "jest --coverage",
     "cov:serve": "npm run cov && static-server .coverage/lcov-report --port 3000 --no-nocache",
-    "cov:publish": "cat ./.coverage/lcov.info | coveralls",
+    "cov:publish": "npm run cov && cat ./.coverage/lcov.info | coveralls",
     "check": "npm run test && npm run lint",
     "prepublish": "npm run build"
   },
