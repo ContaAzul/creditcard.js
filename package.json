@@ -44,6 +44,5 @@
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-uglify": "^3.0.0",
     "static-server": "^2.2.1"
-  },
-  "dependencies": {}
+  }
 }
