@@ -15,12 +15,24 @@ describe('CreditCard', () => {
   };
 
   describe('#validadeExpiryDate', () => {
+    const RealDate = Date;
+
+    function mockDate(...args) {
+      global.Date = class extends RealDate {
+        constructor(...classArgs) {
+          super(...classArgs);
+          return new RealDate(...args);
+        }
+      };
+    }
+
     beforeEach(() => {
-      jasmine.clock().install();
-      jasmine.clock().mockDate(new Date(2017, 6, 10));
+      mockDate(new Date(2017, 6, 10));
     });
 
-    afterEach(() => jasmine.clock().uninstall());
+    afterEach(() => {
+      global.Date = RealDate;
+    });
 
     it('should return true with its a VALID date', () => {
       expect(creditcard.isExpirationDateValid('10', '2020')).toBeTruthy();
