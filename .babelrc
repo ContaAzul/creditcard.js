@@ -1,8 +1,16 @@
 {
-  "presets": [
-    ["env", {
-      "modules": false
-    }]
-  ],
-  "plugins": ["external-helpers"]
+  "env": {
+    "plugins": ["external-helpers"],
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "test": {
+      "presets": ["env"]
+    }
+  }
 }
