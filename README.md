@@ -31,27 +31,26 @@ In the browser:
 ```
 
 ```javascript
-var obj = new CreditCard();
-obj.isValid('4916108926268679'); // returns true
-obj.isExpirationDateValid('02', '2020'); // returns true
-obj.isSecurityCodeValid('4556603578296676', '250'); // returns true
-obj.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
+import { isValid, isExpirationDateValid, isSecurityCodeValid, getCreditCardNameByNumber } from 'creditcard.js';
+
+isValid('4916108926268679'); // returns true
+isExpirationDateValid('02', '2020'); // returns true
+isSecurityCodeValid('4556603578296676', '250'); // returns true
+getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 ```
 
 In the server:
 
 ```javascript
 var creditcard = require('creditcard.js');
-var obj = new creditcard();
-obj.isValid('4916108926268679'); // returns true
-obj.isExpirationDateValid('02', '2020'); // returns true
-obj.isSecurityCodeValid('4556603578296676', '250'); // returns true
-obj.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
+
+creditcard.isValid('4916108926268679'); // returns true
+creditcard.isExpirationDateValid('02', '2020'); // returns true
+creditcard.isSecurityCodeValid('4556603578296676', '250'); // returns true
+creditcard.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 ```
 
-
 ### Functions
-
 
 | Name | Returns |
 |---|---|
