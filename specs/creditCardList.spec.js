@@ -1,12 +1,10 @@
-import CreditCardList from '../src/creditCardList.js';
+import CREDIT_CARD_LIST from '../src/creditCardList.js';
 
 describe('CreditCardList', () => {
-  const list = new CreditCardList();
 
   describe('#getCreditCardList', () => {
     it('should return a array with cards', () => {
-      let cards = list.retrieveCreditCardList();
-      expect(cards instanceof Array).toBeTruthy();
+      expect(CREDIT_CARD_LIST instanceof Array).toBeTruthy();
     });
   });
 });
