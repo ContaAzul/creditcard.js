@@ -1,6 +1,6 @@
 const computed = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
 
-function _sum(number) {
+function sumNumber(number) {
   let sum = 0;
   let digit = 0;
   let i = number.length;
@@ -23,6 +23,6 @@ export function isValid(number) {
 
   digits = digits.replace(/\D/g, '');
 
-  let sum = _sum(digits);
+  let sum = sumNumber(digits);
   return sum > 0 && sum % 10 === 0;
 }
