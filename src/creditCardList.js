@@ -25,15 +25,3 @@ export default [
     regexpFull: '^4[0-9]{12}(?:[0-9]{3})?$'
   }
 ];
-
-// class CreditCardList {
-//   constructor() {
-//     this.list = CREDIT_CARD_LIST;
-//   }
-
-//   retrieveCreditCardList() {
-//     return this.list;
-//   }
-// }
-
-// export default CreditCardList;
