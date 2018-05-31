@@ -4,13 +4,11 @@
   <title>CreditCard Demo</title>
 </head>
 <body>
-  <!-- 1. Include CreditCard -->
-  <script type="text/javascript" src="../dist/creditcard.js"></script>
-
-  <!-- 2. Instantiate CreditCard and enjoy! -->
-  <script>
-    var creditcard = new CreditCard();
-    console.log(creditcard.getCreditCardNameByNumber('4539578763621486')); // return 'Visa'
+  <script type="module">
+    // 1. Include CreditCard
+    import { getCreditCardNameByNumber } from '../dist/creditcard.min.js';
+    // 2. Instantiate CreditCard and enjoy!
+    console.log(getCreditCardNameByNumber('4539578763621486')); // return 'Visa'
   </script>
 </body>
 </html>
