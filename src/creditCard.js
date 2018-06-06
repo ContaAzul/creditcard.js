@@ -2,17 +2,17 @@ import CREDIT_CARD_LIST from './creditCardList';
 export { isValid } from './helpers/luhn';
 
 export function getCreditCardNameByNumber(number) {
-  const INVALID_CARD_MESSAGE = 'Credit card is invalid!';
+  let messageResult = 'Credit card is invalid!';
 
-  for (let i = 0; i < CREDIT_CARD_LIST.length; i++) {
-    let creditcard = CREDIT_CARD_LIST[i];
+  CREDIT_CARD_LIST.find((creditcard) => {
     let regex = new RegExp(creditcard.regexpFull);
 
-    if (regex.test(number))
-      return creditcard.name;
-  }
+    if (regex.test(number)) {
+      messageResult = creditcard.name;
+    }
+  });
 
-  return INVALID_CARD_MESSAGE;
+  return messageResult;
 }
 
 export function isSecurityCodeValid(number, code) {
