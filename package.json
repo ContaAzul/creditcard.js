@@ -19,7 +19,7 @@
     "cov": "jest --coverage",
     "cov:serve": "npm run cov && static-server .coverage/lcov-report --port 3000 --no-nocache",
     "cov:publish": "npm run cov && cat ./.coverage/lcov.info | coveralls",
-    "check": "npm run test && npm run format && npm run lint",
+    "check": "npm run test && npm run lint",
     "prepublish": "npm run build"
   },
   "keywords": [
@@ -52,7 +52,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run check"
+      "pre-commit": "npm run format && npm run lint"
     }
   }
 }
