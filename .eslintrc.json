@@ -1,4 +1,5 @@
 {
+  "plugins": ["prettier"],
   "parserOptions": {
     "sourceType": "module"
   },
@@ -8,6 +9,7 @@
     "node": true,
     "jasmine": true
   },
+  "extends": ["prettier"],
   "globals": {
     "require": true,
     "creditcard": true,
@@ -42,6 +44,7 @@
     "no-underscore-dangle": 0,
     "no-void": 2,
     "one-var": [2, "never"],
+    "prettier/prettier": "error",
     "quotes": [2, "single"],
     "semi": [2, "always"],
     "keyword-spacing": 2,
