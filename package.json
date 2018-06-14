@@ -12,6 +12,7 @@
     "build": "npm run check && npm run build:min",
     "build:watch": "rollup -c -w",
     "build:min": "rollup -c --environment BUILD:production",
+    "format": "prettier --write './src/**/*.js' './specs/**/*.js'",
     "lint": "eslint src specs",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
@@ -37,12 +38,21 @@
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.1",
     "eslint": "^4.9.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^1.0.0-rc.8",
     "jest": "^23.0.1",
+    "prettier": "1.13.5",
     "rollup": "^0.56.5",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-uglify": "^3.0.0",
     "static-server": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint"
+    }
   }
 }
