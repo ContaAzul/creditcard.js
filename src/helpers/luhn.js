@@ -15,7 +15,7 @@ function sumNumber(number) {
 }
 
 export function isValid(number) {
-  let regex = new RegExp('/[^0-9-s]+/');
+  let regex = /[^0-9-\s]+/;
   let digits = number;
 
   if (regex.test(digits)) return false;
