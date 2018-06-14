@@ -1,4 +1,9 @@
-import { isValid, isExpirationDateValid, isSecurityCodeValid, getCreditCardNameByNumber } from '../src/creditCard';
+import {
+  isValid,
+  isExpirationDateValid,
+  isSecurityCodeValid,
+  getCreditCardNameByNumber
+} from '../src/creditCard';
 
 describe('CreditCard', () => {
   const INVALID_CREDIT_CARD = '00000';
@@ -67,7 +72,9 @@ describe('CreditCard', () => {
   describe('#validadeSecurityCode', () => {
     it('should return true when its a VALID security code', () => {
       let securityCode = '100';
-      expect(isSecurityCodeValid('4112888888881881', securityCode)).toBeTruthy();
+      expect(
+        isSecurityCodeValid('4112888888881881', securityCode)
+      ).toBeTruthy();
     });
 
     it('should return true when its a security code of Amex', () => {
