@@ -2,16 +2,15 @@
   "name": "creditcard.js",
   "version": "2.1.3",
   "description": "A simple library for credit-card validation in JavaScript",
-  "main": "dist/creditcard.min.js",
+  "main": "dist/creditcard.js",
   "repository": "ContaAzul/creditcard.js",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
-    "build": "npm run check && npm run build:min",
+    "build": "npm run check && npm run build:production",
     "build:watch": "rollup -c -w",
-    "build:min": "rollup -c --environment BUILD:production",
+    "build:production": "rollup -c",
     "format": "prettier --write './src/**/*.js' './specs/**/*.js'",
     "lint": "eslint src specs",
     "test": "jest",
@@ -47,7 +46,6 @@
     "prettier": "1.13.5",
     "rollup": "^0.56.5",
     "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-uglify": "^3.0.0",
     "static-server": "^2.2.1"
   },
   "husky": {
