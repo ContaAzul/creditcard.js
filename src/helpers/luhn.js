@@ -15,10 +15,10 @@ function sumNumber(number) {
 }
 
 export function isValid(number) {
-  let regex = /[^0-9-\s]+/;
+  const invalidDigits = new RegExp('[^0-9- ]');
   let digits = number;
 
-  if (regex.test(digits)) return false;
+  if (invalidDigits.test(digits)) return false;
 
   digits = digits.replace(/\D/g, '');
 
