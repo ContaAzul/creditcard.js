@@ -8,12 +8,13 @@ const banner = `/**
  */`;
 
 export default {
-  name: 'CreditCard',
   input: 'src/creditCard.js',
   output: {
-    banner: banner,
+    banner,
+    compact: true,
     file: 'dist/creditcard.js',
-    format: 'umd'
+    format: 'umd',
+    name: 'CreditCard'
   },
   plugins: [
     babel({
