@@ -12,7 +12,7 @@
     "build:watch": "rollup -c -w",
     "build:production": "rollup -c",
     "format": "prettier --write './src/**/*.js' './specs/**/*.js'",
-    "lint": "eslint src specs",
+    "lint": "eslint src",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
     "cov": "jest --coverage",

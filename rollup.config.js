@@ -8,7 +8,7 @@ const banner = `/**
  */`;
 
 export default {
-  input: 'src/creditCard.js',
+  input: 'src/creditcard.js',
   output: {
     banner,
     compact: true,

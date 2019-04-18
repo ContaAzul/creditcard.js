@@ -3,12 +3,13 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.js',
   ],
+  coverageReporters: ['html', 'lcovonly'],
   coverageThreshold: {
     global: {
-      statements: 97,
-      branches: 95,
+      statements: 100,
+      branches: 100,
       functions: 100,
-      lines: 97
+      lines: 100
     },
   },
 };
