@@ -8,7 +8,7 @@
 
 ## Install
 
-Creditcard.js available as a NPM package. You can install through npm or yarn:
+creditcard.js available as a NPM package. You can install through npm:
 
 ### NPM
 
@@ -16,38 +16,20 @@ Creditcard.js available as a NPM package. You can install through npm or yarn:
 $ npm install --save creditcard.js
 ```
 
-### Yarn
-
-```sh
-$ yarn add creditcard.js
-```
-
 ## Usage
 
-In the browser:
-
-```html
-<script type="text/javascript" src="dist/creditcard.min.js"></script>
-```
-
 ```javascript
-import { isValid, isExpirationDateValid, isSecurityCodeValid, getCreditCardNameByNumber } from 'creditcard.js';
+import { 
+  isValid, 
+  isExpirationDateValid, 
+  isSecurityCodeValid, 
+  getCreditCardNameByNumber 
+} from 'creditcard.js';
 
 isValid('4916108926268679'); // returns true
 isExpirationDateValid('02', '2020'); // returns true
 isSecurityCodeValid('4556603578296676', '250'); // returns true
 getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
-```
-
-In the server:
-
-```javascript
-var creditcard = require('creditcard.js');
-
-creditcard.isValid('4916108926268679'); // returns true
-creditcard.isExpirationDateValid('02', '2020'); // returns true
-creditcard.isSecurityCodeValid('4556603578296676', '250'); // returns true
-creditcard.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 ```
 
 ### Functions
@@ -67,4 +49,4 @@ creditcard.getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
 
 ## License
 
-MIT © ContaAzul
+MIT © Conta Azul
