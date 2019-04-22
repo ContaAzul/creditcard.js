@@ -1,15 +1,8 @@
 import CARDS from './cards';
 
-export const getCreditCardNameByNumber = number => {
-  const INVALID_CARD_MESSAGE = 'Credit card is invalid!';
-
-  for (let i = 0; i < CARDS.length; i++) {
-    let creditcard = CARDS[i];
-    if (creditcard.bins.test(number)) return creditcard.name;
-  }
-
-  return INVALID_CARD_MESSAGE;
-};
+export const getCreditCardNameByNumber = number =>
+  (CARDS.find(card => card.bins.test(number) && card) || {}).name ||
+  'Credit card is invalid!';
 
 export const isSecurityCodeValid = (number, code) => {
   let brand = getCreditCardNameByNumber(number);
