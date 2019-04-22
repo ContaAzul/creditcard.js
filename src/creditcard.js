@@ -1,17 +1,15 @@
 import CARDS from './cards';
 
-export const getCreditCardNameByNumber = number =>
-  (CARDS.find(card => card.bins.test(number) && card) || {}).name ||
-  'Credit card is invalid!';
+export const getCreditCardNameByNumber = number => {
+  return (
+    (CARDS.find(card => card.bins.test(number) && card) || {}).name ||
+    'Credit card is invalid!'
+  );
+};
 
 export const isSecurityCodeValid = (number, code) => {
-  let brand = getCreditCardNameByNumber(number);
-  let numberLength;
-
-  numberLength = brand === 'Amex' ? 4 : 3;
-  let regex = new RegExp(`^[0-9]{${numberLength}}$`);
-
-  return regex.test(code);
+  const numberLength = getCreditCardNameByNumber(number) === 'Amex' ? 4 : 3;
+  return new RegExp(`^[0-9]{${numberLength}}$`).test(code);
 };
 
 export const isExpirationDateValid = (monthParam, yearParam) => {
