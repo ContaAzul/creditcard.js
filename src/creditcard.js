@@ -12,20 +12,20 @@ export const isSecurityCodeValid = (number, code) => {
   return new RegExp(`^[0-9]{${numberLength}}$`).test(code);
 };
 
-export const isExpirationDateValid = (monthParam, yearParam) => {
-  const month = parseInt(monthParam, 10);
-  const year = parseInt(yearParam, 10);
-
+export const isExpirationDateValid = (month, year) => {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
 
-  if (isNaN(month) || isNaN(year)) return false;
-
-  if (year === currentYear && month < currentMonth) return false;
-
-  if (month < 1 || month > 12) return false;
-
-  return !(year < 1000 || year >= 3000);
+  return (
+    !isNaN(month) &&
+    !isNaN(year) &&
+    year !== currentYear &&
+    month >= currentMonth &&
+    month >= 1 &&
+    month <= 12 &&
+    year >= 1000 &&
+    year < 3000
+  );
 };
 
 export const isValid = number => {

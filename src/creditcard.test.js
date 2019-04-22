@@ -38,24 +38,24 @@ describe('CreditCard', () => {
       global.Date = RealDate;
     });
 
-    it('should return true with its a VALID date', () => {
-      expect(isExpirationDateValid('10', '2020')).toBeTruthy();
+    it('should return true with it is a valid date', () => {
+      expect(isExpirationDateValid('10', '2020')).toEqual(true);
     });
 
-    it('should return true with its a INVALID year', () => {
-      expect(isExpirationDateValid('10', '200')).toBeFalsy();
+    it('should return true with it is a invalid year', () => {
+      expect(isExpirationDateValid('10', '200')).toEqual(false);
     });
 
-    it('should return true with its a INVALID month', () => {
-      expect(isExpirationDateValid('15', '2020')).toBeFalsy();
+    it('should return true with it is invalid month', () => {
+      expect(isExpirationDateValid('15', '2020')).toEqual(false);
     });
 
     it('should return false with empty month or year', () => {
-      expect(isExpirationDateValid('', '')).toBeFalsy();
+      expect(isExpirationDateValid('', '')).toEqual(false);
     });
 
     it('should return false when month is past', () => {
-      expect(isExpirationDateValid('01', '2017')).toBeFalsy();
+      expect(isExpirationDateValid('01', '2017')).toEqual(false);
     });
   });
 
