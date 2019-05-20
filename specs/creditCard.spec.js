@@ -12,7 +12,8 @@ describe('CreditCard', () => {
       amex: '373257135458763',
       aura: '5078601870000127985',
       hiper: '6062825303833679',
-      visaMask: '4532000000000000'
+      visaMask: '4532000000000000',
+      jcb: '3573945227857668'
     };
   });
 
@@ -111,6 +112,11 @@ describe('CreditCard', () => {
     it('should return valid name for mask number', () => {
       let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.visaMask);
       expect(creditCardName).toBe('Visa');
+    });
+
+    it('should return the name of Jcb', () => {
+      let creditCardName = creditcard.getCreditCardNameByNumber(CREDIT_CARDS.jcb);
+      expect(creditCardName).toBe('Jcb');
     });
 
     it('should return false', () => {

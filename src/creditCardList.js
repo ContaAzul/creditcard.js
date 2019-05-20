@@ -23,6 +23,9 @@ const CREDIT_CARD_LIST = [
   }, {
     name: 'Visa',
     regexpFull: /^4[0-9]{12}(?:[0-9]{3})?$/
+  }, {
+    name: 'Jcb',
+    regexpFull: /^(?:2131|1800|35[0-9]{3})[0-9]{11}$/
   }
 ];
 
