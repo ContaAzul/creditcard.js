@@ -30,13 +30,10 @@ export const isExpirationDateValid = (month, year) => {
 
 export const isValid = number => {
   const invalidDigits = new RegExp('[^0-9- ]');
-  let digits = number;
 
-  if (invalidDigits.test(digits)) return false;
+  if (invalidDigits.test(number)) return false;
 
-  digits = digits.replace(/\D/g, '');
-
-  let sum = sumNumber(digits);
+  const sum = sumNumber(number.replace(/\D/g, ''));
   return sum > 0 && sum % 10 === 0;
 };
 
