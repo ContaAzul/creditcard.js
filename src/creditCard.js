@@ -49,7 +49,7 @@ class CreditCard {
     if (isNaN(month) || isNaN(year))
       return false;
 
-    if (year === currentYear && month < currentMonth)
+    if (year <= currentYear && month < currentMonth)
       return false;
 
     if (month < 1 || month > 12)
