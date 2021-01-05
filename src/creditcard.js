@@ -13,19 +13,7 @@ export const isSecurityCodeValid = (number, code) => {
 };
 
 export const isExpirationDateValid = (month, year) => {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth() + 1;
-
-  return (
-    !isNaN(month) &&
-    !isNaN(year) &&
-    year !== currentYear &&
-    month >= currentMonth &&
-    month >= 1 &&
-    month <= 12 &&
-    year >= 1000 &&
-    year < 3000
-  );
+  return isValidMonth(month) && isValidYear(year) && isFutureOrPresentDate(month, year);
 };
 
 export const isValid = number => {
@@ -36,6 +24,40 @@ export const isValid = number => {
   const sum = sumNumber(number.replace(/\D/g, ''));
   return sum > 0 && sum % 10 === 0;
 };
+
+function isValidMonth(month) {
+  return !isNaN(month) && month >= 1 && month <= 12;
+}
+
+function isValidYear(year) {
+  return !isNaN(year) && isValidFullYear(formatFullYear(year));
+}
+
+function formatFullYear(year) {
+  if (year.length === 4)
+    return year;
+
+  if (year.length === 2) {
+    return parseInt(year) + 2000;
+  }
+
+  return 0;
+}
+
+function isValidFullYear(year) {
+  return year >= 2000 && year <= 2999;
+}
+
+function isFutureOrPresentDate(month, year) {
+  const fullYear = formatFullYear(year);
+  const currentDate = new Date();
+  const expirationDate = new Date();
+  
+  currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), 1);
+  expirationDate.setFullYear(fullYear, month - 1, 1);
+
+  return currentDate <= expirationDate;
+}
 
 function sumNumber(number) {
   const computed = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
