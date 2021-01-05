@@ -13,7 +13,11 @@ export const isSecurityCodeValid = (number, code) => {
 };
 
 export const isExpirationDateValid = (month, year) => {
-  return isValidMonth(month) && isValidYear(year) && isFutureOrPresentDate(month, year);
+  return (
+    isValidMonth(month) &&
+    isValidYear(year) &&
+    isFutureOrPresentDate(month, year)
+  );
 };
 
 export const isValid = number => {
@@ -34,8 +38,7 @@ function isValidYear(year) {
 }
 
 function formatFullYear(year) {
-  if (year.length === 4)
-    return year;
+  if (year.length === 4) return year;
 
   if (year.length === 2) {
     return parseInt(year) + 2000;
@@ -52,7 +55,7 @@ function isFutureOrPresentDate(month, year) {
   const fullYear = formatFullYear(year);
   const currentDate = new Date();
   const expirationDate = new Date();
-  
+
   currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), 1);
   expirationDate.setFullYear(fullYear, month - 1, 1);
 
