@@ -31,31 +31,39 @@ describe('CreditCard', () => {
     }
 
     beforeEach(() => {
-      mockDate(new Date(2017, 6, 10));
+      mockDate(new Date(2021, 0, 10));
     });
 
     afterEach(() => {
       global.Date = RealDate;
     });
 
-    it('should return true with it is a valid date', () => {
-      expect(isExpirationDateValid('10', '2020')).toEqual(true);
+    it('should return true with it is a valid and future full year date', () => {
+      expect(isExpirationDateValid('10', '2023')).toBe(true);
+    });
+
+    it('should return true with it is a valid and future short year date', () => {
+      expect(isExpirationDateValid('8', '25')).toBe(true);
+    });
+
+    it('should return true with it is a valid date and current month and year', () => {
+      expect(isExpirationDateValid('1', '2021')).toBe(true);
     });
 
     it('should return true with it is a invalid year', () => {
-      expect(isExpirationDateValid('10', '200')).toEqual(false);
+      expect(isExpirationDateValid('10', '200')).toBe(false);
     });
 
     it('should return true with it is invalid month', () => {
-      expect(isExpirationDateValid('15', '2020')).toEqual(false);
+      expect(isExpirationDateValid('15', '2020')).toBe(false);
     });
 
     it('should return false with empty month or year', () => {
-      expect(isExpirationDateValid('', '')).toEqual(false);
+      expect(isExpirationDateValid('', '')).toBe(false);
     });
 
     it('should return false when month is past', () => {
-      expect(isExpirationDateValid('01', '2017')).toEqual(false);
+      expect(isExpirationDateValid('01', '2017')).toBe(false);
     });
   });
 

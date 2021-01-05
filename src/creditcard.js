@@ -1,5 +1,7 @@
 import CARDS from './cards';
 
+const MILLENNIUM = 1000;
+
 export const getCreditCardNameByNumber = number => {
   return (
     (CARDS.find(card => card.bins.test(number) && card) || {}).name ||
@@ -13,18 +15,10 @@ export const isSecurityCodeValid = (number, code) => {
 };
 
 export const isExpirationDateValid = (month, year) => {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth() + 1;
-
   return (
-    !isNaN(month) &&
-    !isNaN(year) &&
-    year !== currentYear &&
-    month >= currentMonth &&
-    month >= 1 &&
-    month <= 12 &&
-    year >= 1000 &&
-    year < 3000
+    isValidMonth(month) &&
+    isValidYear(year) &&
+    isFutureOrPresentDate(month, year)
   );
 };
 
@@ -36,6 +30,41 @@ export const isValid = number => {
   const sum = sumNumber(number.replace(/\D/g, ''));
   return sum > 0 && sum % 10 === 0;
 };
+
+function isValidMonth(month) {
+  return !isNaN(month) && month >= 1 && month <= 12;
+}
+
+function isValidYear(year) {
+  return !isNaN(year) && isValidFullYear(formatFullYear(year));
+}
+
+function formatFullYear(year) {
+  if (year.length === 2) return dateRange(year);
+
+  return year.length === 4 ? year : 0;
+}
+
+function dateRange(increaseYear = 0) {
+  const year = parseInt(increaseYear);
+  const today = new Date();
+  return Math.floor(today.getFullYear() / MILLENNIUM) * MILLENNIUM + year;
+}
+
+function isValidFullYear(year) {
+  return year >= dateRange() && year <= dateRange(MILLENNIUM);
+}
+
+function isFutureOrPresentDate(month, year) {
+  const fullYear = formatFullYear(year);
+  const currentDate = new Date();
+  const expirationDate = new Date();
+
+  currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), 1);
+  expirationDate.setFullYear(fullYear, month - 1, 1);
+
+  return currentDate <= expirationDate;
+}
 
 function sumNumber(number) {
   const computed = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
