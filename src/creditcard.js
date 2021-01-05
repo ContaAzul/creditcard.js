@@ -1,5 +1,7 @@
 import CARDS from './cards';
 
+const MILLENNIUM = 1000;
+
 export const getCreditCardNameByNumber = number => {
   return (
     (CARDS.find(card => card.bins.test(number) && card) || {}).name ||
@@ -38,17 +40,19 @@ function isValidYear(year) {
 }
 
 function formatFullYear(year) {
-  if (year.length === 4) return year;
+  if (year.length === 2) return dateRange(year);
 
-  if (year.length === 2) {
-    return parseInt(year) + 2000;
-  }
+  return year.length === 4 ? year : 0;
+}
 
-  return 0;
+function dateRange(increaseYear = 0) {
+  const year = parseInt(increaseYear);
+  const today = new Date();
+  return Math.floor(today.getFullYear() / MILLENNIUM) * MILLENNIUM + year;
 }
 
 function isValidFullYear(year) {
-  return year >= 2000 && year <= 2999;
+  return year >= dateRange() && year <= dateRange(MILLENNIUM);
 }
 
 function isFutureOrPresentDate(month, year) {
