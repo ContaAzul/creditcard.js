@@ -4,107 +4,193 @@
   <meta charset="utf-8">
   <title>creditcard.js - A simple credit card validation library in JavaScript</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A simple credit card validation library in JavaScript. It validates expiration date, secury code and credit card number. Works on the browser and Node.js.">
+  <meta name="description" content="A simple credit card validation library in JavaScript. It validates expiration date, security code and credit card number.">
 
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <meta property="og:title" content="creditcard.js">
   <meta property="og:description" content="A simple credit card validation library in JavaScript">
   <meta property="og:url" content="https://contaazul.github.io/creditcard.js/">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.contaazul.com/components/9.1.0/ca-components.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="vendor/bulma/bulma.min.css">
   <link rel="stylesheet" href="vendor/prism/prism.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="vendor/heart/heart.css">
 </head>
 <body>
-  <section class="ccjs-banner ccjs-background">
-    <img src="images/credit-card.svg" width="280px" alt="Illustration of credit cards" class="ccjs-banner-image" />
-    <h1 class="semi-bold-title">creditcard.js</h1>
-    <h2>A simple credit card validation library in JavaScript</h2>
-    <div class="gh-buttons">
-      <iframe src="https://ghbtns.com/github-btn.html?user=contaazul&repo=creditcard.js&type=watch&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
-      <iframe src="https://ghbtns.com/github-btn.html?user=contaazul&repo=creditcard.js&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
+  <section class="hero has-text-centered is-medium">
+    <div class="hero-body">
+      <div class="container">
+        <img src="images/credit-card.svg" width="280px" alt="Illustration of credit cards" class="ccjs-banner-image" />
+        <h1 class="title is-size-1">creditcard.js</h1>
+        <div class="subtitle mt-2 mb-6">A simple credit card validation library in JavaScript</div>
+        <div class="gh-buttons">
+          <iframe src="https://ghbtns.com/github-btn.html?user=contaazul&repo=creditcard.js&type=watch&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
+          <iframe src="https://ghbtns.com/github-btn.html?user=contaazul&repo=creditcard.js&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="130px" height="30px"></iframe>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="ccjs-content">
-    <div class="container dg-view">
-      <h2 class="semi-bold-title">Install</h2>
-      <p>You can <a href="https://github.com/contaazul/creditcard.js/archive/master.zip">download the ZIP file</a>, use NPM or Bower.</p>
-      <h3>NPM</h3>
-      <pre>
-        <code>
-        npm install --save creditcard.js
-        </code>
-      </pre>
-      <h3>Bower</h3>
-      <pre>
-        <code>
-        bower install --save creditcard.js
-        </code>
-      </pre>
-
-      <h2 class="semi-bold-title">Usage</h2>
-      <p>In browser:</p>
-      <pre class="language-javascript">
-        <code>
-        var obj = new CreditCard();
-        obj.getCreditCardNameByNumber('4539578763621486'); // return 'Visa'
-        </code>
-      </pre>
-
-      <p>In server:</p>
-      <pre class="language-javascript">
-        <code>
-        var creditcard = require('creditcard.js');
-        var obj = new creditcard();
-        obj.getCreditCardNameByNumber('4539578763621486'); // return 'Visa'
-        </code>
-      </pre>
-
-      <h3>Methods</h3>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <table class="ca-table ca-table--default">
-            <thead>
-              <tr>
-                <th class="ca-col-6">Name</th>
-                <th class="ca-col-6">Returns</th>
-              </tr>
-            </thead>
-          	<tbody>
-              <tr>
-                <td>CreditCard#isExpirationDateValid()</td>
-                <td><code>Boolean</code></td>
-              </tr>
-              <tr>
-                <td>CreditCard#isValid()</td>
-                <td><code>Boolean</code></td>
-              </tr>
-              <tr>
-                <td>CreditCard#isSecurityCodeValid()</td>
-                <td><code>Boolean</code></td>
-              </tr>
-              <tr>
-                <td>CreditCard#getCreditCardNameByNumber()</td>
-                <td><code>String</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <section class="section">
+    <div class="container">
+      <h2 class="is-size-2">Install</h2>
+      <div class="content">
+        <br>
+        <p><strong>Creditcard.js</strong> is available as a NPM package. You can install through npmYarn or NPM:</p>
       </div>
+      <h3 class="is-size-4">Yarn</h3>
+      <pre class="language-batch">
+        <code>
+  yarn add creditcard.js</code>
+      </pre>
+      <h3 class="is-size-4">NPM</h3>
+      <pre class="language-batch">
+        <code>
+  npm install creditcard.js</code>
+      </pre>
+    </div>
+  </section>
 
-      <h2>License</h2>
+  <section class="section">
+    <div class="container">
+      <h2 class="is-size-2">Usage</h2>
+  
+      <pre class="language-javascript">
+<code>
+  import { 
+    isValid, 
+    isExpirationDateValid, 
+    isSecurityCodeValid, 
+    getCreditCardNameByNumber 
+  } from 'creditcard.js';
+  
+  isValid('4916108926268679'); // returns true
+  isExpirationDateValid('02', '2027'); // returns true
+  isSecurityCodeValid('4556603578296676', '250'); // returns true
+  getCreditCardNameByNumber('4539578763621486'); // returns 'Visa'
+</code>
+      </pre>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="is-size-2">Methods</h2>
+      <hr>
+
+      <div class="content">
+
+        <h4>
+          <code><strong>isValid(number)</strong></code> &rArr; <code><em>boolean</em></code>
+        </h4>
+        <p>Checks whether the credit card number format is valid. <em>(See the full list of <a href="#supported-card-types">currently supported cards</a>)</em></p>
+
+        <ul>
+          <li>
+            <strong>number</strong> <br>
+            <em>Required</em><br>
+            Type: <code>string</code>
+          </li>
+        </ul>
+
+        <hr>
+
+        <h4>
+          <code><strong>isExpirationDateValid(month, year)</strong></code> &rArr; <code><em>boolean</em></code>
+        </h4>
+
+        <p>Checks that the expiration date is valid and not expired. <em>(2 or 4 digit years are accepted)</em></p>
+
+        <ul>
+          <li>
+            <strong>month</strong><br>
+            <em>Required</em><br>
+            Type: <code>string</code>
+          </li>
+          <li>
+            <strong>year</strong><br>
+            <em>Required</em><br>
+            Type: <code>string</code>
+          </li>
+        </ul>
+
+        <hr>
+
+        <h4>
+          <code><strong>isSecurityCodeValid(creditCardNumber, securityCode)</strong></code> &rArr; <code><em>boolean</em></code>
+        </h4>
+
+        <p>Check that the security code is valid according to the type of credit card.</p>
+
+        <ul>
+          <li>
+            <strong>creditCardNumber</strong><br>
+            <em>Required</em><br>
+            Type: <code>string</code>
+          </li>
+          <li>
+            <strong>securityCode</strong><br>
+            <em>Required</em><br>
+            Type: <code>string</code>
+          </li>
+        </ul>
+
+        <hr>
+
+        <h4>
+          <code><strong>getCreditCardNameByNumber(number)</strong></code> &rArr; <code><em>string</em></code>
+        </h4>
+
+        <p>Returns the credit card type from the card number. <em>(See the full list of <a href="#supported-card-types">currently supported cards</a>)</em></p>
+
+        <ul>
+          <li>
+            <strong>number</strong><br>
+            <em>Required</em><br>
+            Type: <code>string</code>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2 class="is-size-2" id="supported-card-types">Supported credit card types</h2>
+
+      <div class="content">
+        <ul>
+          <li>American Express</li>
+          <li>Aura</li>
+          <li>Banescard</li>
+          <li>Cabal</li>
+          <li>Diners</li>
+          <li>Discover</li>
+          <li>Elo</li>
+          <li>Goodcard</li>
+          <li>Hipercard</li>
+          <li>Mastercard</li>
+          <li>Maxxvan</li>
+          <li>Visa</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+        
+  <section class="section">
+    <div class="container">
+      <h2 class="is-size-2">License</h2>
+      <br>
       <p>MIT &copy; ContaAzul</p>
     </div>
   </section>
 
-  <footer class="ccjs-footer ccjs-background">
-    <p>Created by <a href="https://contaazul.com/carreiras/" title="Conta Azul's Website"
-      target="_blank" class="semi-bold-title">Conta Azul Team</a> with <span class="heartbeat">love</span> for community.</p>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>Created by <a href="https://contaazul.com/carreiras/" title="Conta Azul's Website"
+        target="_blank">Conta Azul Team</a> with <span class="heartbeat">love</span> for community.</p>
+    </div>
   </footer>
-
-  <script type="text/javascript" src="vendor/prism/prism.js"></script>
+  <script src="vendor/prism/prism.js"></script>
 </body>
