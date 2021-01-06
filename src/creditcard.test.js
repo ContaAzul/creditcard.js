@@ -12,10 +12,12 @@ describe('CreditCard', () => {
     master: '5369835519963014',
     diners: '30346836403940',
     elo: '5041756758046020',
+    discover: '6011091105248358',
     amex: '373257135458763',
     aura: '5078601870000127985',
     hiper: '6062825303833679',
-    visaMask: '4532000000000000'
+    visaMask: '4532000000000000',
+    jcb: '3566956197798757'
   };
 
   describe('#validadeExpiryDate', () => {
@@ -81,7 +83,7 @@ describe('CreditCard', () => {
     });
 
     it('should return true when its a security code of Discover', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.amex, '9999')).toBe(true);
+      expect(isSecurityCodeValid(CREDIT_CARDS.discover, '9999')).toBe(true);
     });
 
     it('should return false when its a wrong security code of Visa', () => {
@@ -120,6 +122,10 @@ describe('CreditCard', () => {
 
     it('should return the name of Hipercard', () => {
       expect(getCreditCardNameByNumber(CREDIT_CARDS.hiper)).toBe('Hipercard');
+    });
+
+    it('should return the name of JCB', () => {
+      expect(getCreditCardNameByNumber(CREDIT_CARDS.jcb)).toBe('JCB');
     });
 
     it('should return valid name for mask number', () => {
