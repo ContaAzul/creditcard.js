@@ -91,6 +91,14 @@ describe('CreditCard', () => {
     it('should return false when its a INVALID security code', () => {
       expect(isSecurityCodeValid(CREDIT_CARDS.visa, '99')).toBe(false);
     });
+
+    it('should return true when its a not mapped card type and security code has 3 digit', () => {
+      expect(isSecurityCodeValid('123', '999')).toBe(true);
+    });
+
+    it('should return false when its a not mapped card type and security code has not 3 digit', () => {
+      expect(isSecurityCodeValid('123', '99')).toBe(false);
+    });
   });
 
   describe('#getCreditCardNameByNumber', () => {

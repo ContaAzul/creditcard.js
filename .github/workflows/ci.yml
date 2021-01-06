@@ -15,5 +15,7 @@ jobs:
           node-version: '12.x'
     - name: Install dependencies   
       run: yarn
-    - name: Test and lint
-      run: yarn run check
+    - name: Run lint
+      run: yarn lint
+    - name: Run test and check coverage
+      run: yarn run cov
