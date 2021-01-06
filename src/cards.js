@@ -58,5 +58,10 @@ export default [
     name: 'Hipercard',
     bins: /^(38[0-9]{17}|60[0-9]{14})$/,
     codeLength: 3
+  },
+  {
+    name: 'JCB',
+    bins: /^(?:2131|1800|35\d{3})\d{11}$/,
+    codeLength: 3
   }
 ];
