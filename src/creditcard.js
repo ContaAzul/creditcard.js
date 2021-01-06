@@ -1,16 +1,14 @@
 import CARDS from './cards';
 
 const MILLENNIUM = 1000;
+const DEFAULT_CODE_LENGTH = 3;
 
 export const getCreditCardNameByNumber = number => {
-  return (
-    (CARDS.find(card => card.bins.test(number) && card) || {}).name ||
-    'Credit card is invalid!'
-  );
+  return findCreditCardObjectByNumber(number).name || 'Credit card is invalid!';
 };
 
 export const isSecurityCodeValid = (number, code) => {
-  const numberLength = getCreditCardNameByNumber(number) === 'Amex' ? 4 : 3;
+  const numberLength = getCreditCardCodeLengthByNumber(number);
   return new RegExp(`^[0-9]{${numberLength}}$`).test(code);
 };
 
@@ -30,6 +28,14 @@ export const isValid = number => {
   const sum = sumNumber(number.replace(/\D/g, ''));
   return sum > 0 && sum % 10 === 0;
 };
+
+function findCreditCardObjectByNumber(number) {
+  return CARDS.find(card => card.bins.test(number) && card) || {};
+}
+
+function getCreditCardCodeLengthByNumber(number) {
+  return findCreditCardObjectByNumber(number).codeLength || DEFAULT_CODE_LENGTH;
+}
 
 function isValidMonth(month) {
   return !isNaN(month) && month >= 1 && month <= 12;

@@ -69,15 +69,27 @@ describe('CreditCard', () => {
 
   describe('#isSecurityCodeValid', () => {
     it('should return true when its a VALID security code', () => {
-      expect(isSecurityCodeValid('4112888888881881', '100')).toEqual(true);
+      expect(isSecurityCodeValid(CREDIT_CARDS.master, '999')).toBe(true);
     });
 
     it('should return true when its a security code of Amex', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.amex, '5000')).toEqual(true);
+      expect(isSecurityCodeValid(CREDIT_CARDS.amex, '9999')).toBe(true);
+    });
+
+    it('should return false when its a wrong security code of Amex', () => {
+      expect(isSecurityCodeValid(CREDIT_CARDS.amex, '999')).toBe(false);
+    });
+
+    it('should return true when its a security code of Discover', () => {
+      expect(isSecurityCodeValid(CREDIT_CARDS.amex, '9999')).toBe(true);
+    });
+
+    it('should return false when its a wrong security code of Visa', () => {
+      expect(isSecurityCodeValid(CREDIT_CARDS.visa, '9999')).toBe(false);
     });
 
     it('should return false when its a INVALID security code', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.visa, '10')).toEqual(false);
+      expect(isSecurityCodeValid(CREDIT_CARDS.visa, '99')).toBe(false);
     });
   });
 
