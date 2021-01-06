@@ -3,13 +3,13 @@ import CARDS from './cards';
 const MILLENNIUM = 1000;
 const DEFAULT_CODE_LENGTH = 3;
 
-export const getCreditCardNameByNumber = number => {
+export const getCreditCardNameByNumber = (number) => {
   return findCreditCardObjectByNumber(number).name || 'Credit card is invalid!';
 };
 
-export const isSecurityCodeValid = (number, code) => {
-  const numberLength = getCreditCardCodeLengthByNumber(number);
-  return new RegExp(`^[0-9]{${numberLength}}$`).test(code);
+export const isSecurityCodeValid = (creditCardNumber, securityCode) => {
+  const numberLength = getCreditCardCodeLengthByNumber(creditCardNumber);
+  return new RegExp(`^[0-9]{${numberLength}}$`).test(securityCode);
 };
 
 export const isExpirationDateValid = (month, year) => {
@@ -20,7 +20,7 @@ export const isExpirationDateValid = (month, year) => {
   );
 };
 
-export const isValid = number => {
+export const isValid = (number) => {
   const invalidDigits = new RegExp('[^0-9- ]');
 
   if (invalidDigits.test(number)) return false;
@@ -30,7 +30,8 @@ export const isValid = number => {
 };
 
 function findCreditCardObjectByNumber(number) {
-  return CARDS.find(card => card.bins.test(number) && card) || {};
+  const numberOnly = number.replace(/[^\d]/g, '');
+  return CARDS.find((card) => card.bins.test(numberOnly) && card) || {};
 }
 
 function getCreditCardCodeLengthByNumber(number) {
