@@ -6,6 +6,8 @@
 
 > A simple credit cards validation library in JavaScript.
 
+Project website: https://contaazul.github.io/creditcard.js
+
 ## Install
 
 creditcard.js is available as a NPM package. You can install through Yarn or NPM:
@@ -107,12 +109,6 @@ Type: `string`
 - Mastercard
 - Maxxvan
 - Visa
-
-## Browser support
-
-| <img src="http://i.imgur.com/dJC1GUv.png" width="48px" height="48px" alt="Chrome logo"> | <img src="http://i.imgur.com/o1m5RcQ.png" width="48px" height="48px" alt="Firefox logo"> | <img src="http://i.imgur.com/8h3iz5H.png" width="48px" height="48px" alt="Internet Explorer logo"> | <img src="http://i.imgur.com/iQV4nmJ.png" width="48px" height="48px" alt="Opera logo"> | <img src="http://i.imgur.com/j3tgNKJ.png" width="48px" height="48px" alt="Safari logo"> |
-|:---:|:---:|:---:|:---:|:---:|
-| Latest ✔ | Latest ✔ | 9+ ✔ | Latest ✔ | 8+ ✔ |
 
 ## License
 
