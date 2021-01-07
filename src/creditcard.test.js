@@ -2,7 +2,7 @@ import {
   isValid,
   isExpirationDateValid,
   isSecurityCodeValid,
-  getCreditCardNameByNumber
+  getCreditCardNameByNumber,
 } from '../src/creditcard';
 
 describe('CreditCard', () => {
@@ -17,7 +17,7 @@ describe('CreditCard', () => {
     aura: '5078601870000127985',
     hiper: '6062825303833679',
     visaMask: '4532000000000000',
-    jcb: '3566956197798757'
+    jcb: '3566956197798757',
   };
 
   describe('#validadeExpiryDate', () => {
