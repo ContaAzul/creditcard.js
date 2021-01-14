@@ -19,7 +19,8 @@
     "cov:serve": "npm run cov && static-server .coverage/lcov-report --port 3000 --no-nocache",
     "cov:publish": "npm run cov && cat ./.coverage/lcov.info | coveralls",
     "check": "npm run test && npm run lint",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "release": "release-it"
   },
   "keywords": [
     "credit",
@@ -42,6 +43,7 @@
     "husky": "^4.3.6",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
+    "release-it": "^14.2.2",
     "rollup": "^2.36.1",
     "rollup-plugin-babel": "^4.4.0",
     "static-server": "^2.2.1"

@@ -1,0 +1,51 @@
+name: Publish package
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  publish:
+    name: Build and Publish
+    runs-on: ubuntu-latest
+
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    steps:
+      # Checkout the repo
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Setup Node.js build environment
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      # Cache dependencies
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: |
+            **/node_modules
+          key: yarn-${{ hashFiles('**/package.json', 'yarn.lock') }}
+
+      # Install project dependencies
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn
+
+      # Build the project
+      - name: Build
+        run: yarn build
+
+      # Generate new .npmrc with token
+      - name: Generate .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+
+      # release and publish version
+      - name: Release version
+        run: yarn release --ci
