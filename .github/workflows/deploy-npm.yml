@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
 
       # Cache dependencies
       - name: Cache Dependencies
@@ -42,10 +43,8 @@ jobs:
       - name: Build
         run: yarn build
 
-      # Generate new .npmrc with token
-      - name: Generate .npmrc
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-
       # release and publish version
       - name: Release version
         run: yarn release --ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
