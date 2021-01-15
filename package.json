@@ -32,7 +32,10 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "@release-it/conventional-changelog": "^1.1.0",
     "babel-jest": "^26.6.3",
+    "conventional-changelog": "^3.1.18",
+    "conventional-changelog-conventionalcommits": "^4.2.3",
     "coveralls": "^3.1.0",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",
@@ -45,10 +48,7 @@
     "release-it": "^14.2.2",
     "rollup": "^2.36.1",
     "rollup-plugin-babel": "^4.4.0",
-    "static-server": "^2.2.1",
-    "conventional-changelog": "^3.1.18",
-    "conventional-changelog-conventionalcommits": "^4.2.3",
-    "@release-it/conventional-changelog": "^1.1.0"
+    "static-server": "^2.2.1"
   },
   "husky": {
     "hooks": {
