@@ -19,7 +19,6 @@
     "cov:serve": "npm run cov && static-server .coverage/lcov-report --port 3000 --no-nocache",
     "cov:publish": "npm run cov && cat ./.coverage/lcov.info | coveralls",
     "check": "npm run test && npm run lint",
-    "prepare": "npm run build",
     "release": "release-it"
   },
   "keywords": [
@@ -46,7 +45,10 @@
     "release-it": "^14.2.2",
     "rollup": "^2.36.1",
     "rollup-plugin-babel": "^4.4.0",
-    "static-server": "^2.2.1"
+    "static-server": "^2.2.1",
+    "conventional-changelog": "^3.1.18",
+    "conventional-changelog-conventionalcommits": "^4.2.3",
+    "@release-it/conventional-changelog": "^1.1.0"
   },
   "husky": {
     "hooks": {
