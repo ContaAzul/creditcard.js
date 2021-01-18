@@ -1,4 +1,5 @@
 {
+  "plugins": ["prettier"],
   "parserOptions": {
     "sourceType": "module"
   },
@@ -6,9 +7,9 @@
     "es6": true,
     "browser": true,
     "node": true,
-    "jasmine": true,
-    "es6": true
+    "jasmine": true
   },
+  "extends": ["prettier"],
   "globals": {
     "require": true,
     "creditcard": true,
@@ -20,7 +21,13 @@
   },
   "rules": {
     "camelcase": 2,
-    "comma-dangle": [2, "never"],
+    "comma-dangle": [2, {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "never"
+    }],
     "comma-spacing": 2,
     "comma-style": [2, "last"],
     "eol-last": 2,
@@ -43,6 +50,7 @@
     "no-underscore-dangle": 0,
     "no-void": 2,
     "one-var": [2, "never"],
+    "prettier/prettier": "error",
     "quotes": [2, "single"],
     "semi": [2, "always"],
     "keyword-spacing": 2,

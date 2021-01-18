@@ -1,0 +1,17 @@
+/* eslint-disable no-template-curly-in-string */
+module.exports = {
+  git: {
+    tagName: 'v${version}',
+    commitMessage: 'release v${version}',
+    pushRepo: 'git@github.com:ContaAzul/creditcard.js.git',
+    tagAnnotation: "Release v${version}",
+  },
+  github: {
+    release: true,
+    releaseName: 'v${version}',
+    tokenRef: 'GH_TOKEN',
+  },
+  plugins: {
+    './.github/workflows/scripts/conventional-changelog.js': {},
+  },
+};
