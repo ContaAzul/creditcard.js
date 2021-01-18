@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'release v')"
 
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
     steps:
       # Checkout the repo
       - name: Checkout
@@ -43,7 +40,16 @@ jobs:
       # Build the project
       - name: Build
         run: yarn build
+      
+      # Authenticate to NPM
+      - name: Authenticate with Registry
+        run: |
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+          npm whoami
 
       # release and publish version
       - name: Release version
         run: yarn release --ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
