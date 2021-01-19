@@ -40,15 +40,14 @@ jobs:
       # Build the project
       - name: Build
         run: yarn build
-      
+
       # Authenticate to NPM
       - name: Authenticate with Registry
         run: |
-          echo "registry=http://registry.npmjs.org/" > .npmrc
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
-      # release and publish version
+      # Release and publish version
       - name: Release version
-        run: yarn release --ci
+        run: yarn release --ci --npm.skipChecks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
