@@ -4,6 +4,7 @@
   "description": "A simple library for credit-card validation in JavaScript",
   "main": "dist/creditcard.js",
   "repository": "ContaAzul/creditcard.js",
+  "author": "@ContaAzul",
   "files": [
     "dist"
   ],
@@ -21,14 +22,17 @@
     "check": "npm run test && npm run lint",
     "release": "release-it"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm run lint"
+    }
+  },
   "keywords": [
     "credit",
     "card",
     "money",
     "validator"
   ],
-  "author": "@ContaAzul",
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -51,9 +55,9 @@
     "rollup-plugin-terser": "^7.0.2",
     "static-server": "^2.2.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run format && npm run lint"
-    }
-  }
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.org/"
+  },
+  "license": "MIT"
 }
