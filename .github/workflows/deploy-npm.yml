@@ -10,14 +10,26 @@ jobs:
     name: Build and Publish
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'release v')"
-
     env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
     steps:
+      - name: Fix up git URLs
+        run: echo -e '[url "https://github.com/"]\n  insteadOf = "git@github.com:"' >> ~/.gitconfig
+
       # Checkout the repo
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: master
+          token: ${{ secrets.GH_TOKEN }}
+
+      # Configure git
+      - name: Configure CI Git User
+        run: |
+          git config --global user.name "${{github.event.head_commit.author.name}}"
+          git config --global user.email "${{github.event.head_commit.author.email}}"
+          git remote set-url origin https://$GITHUB_ACTOR:$GH_TOKEN@github.com/ContaAzul/creditcard.js
 
       # Setup Node.js build environment
       - name: Setup Node
@@ -44,6 +56,12 @@ jobs:
       - name: Build
         run: yarn build
 
-      # release and publish version
+      # Authenticate to NPM
+      - name: Authenticate with Registry
+        run: |
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+
+      # Release and publish version
       - name: Release version
-        run: yarn release --ci
+        run: yarn release --ci --npm.skipChecks
