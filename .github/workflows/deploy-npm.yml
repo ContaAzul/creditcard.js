@@ -44,8 +44,8 @@ jobs:
       # Authenticate to NPM
       - name: Authenticate with Registry
         run: |
-          echo "registry=http://registry.npmjs.org/" >> .npmrc
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          echo "registry=http://registry.npmjs.org/" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
 
       # Release and publish version
       - name: Release version
