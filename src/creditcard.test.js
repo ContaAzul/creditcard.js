@@ -67,6 +67,18 @@ describe('CreditCard', () => {
     it('should return false when month is past', () => {
       expect(isExpirationDateValid('01', '2017')).toBe(false);
     });
+
+    it('should return false when send zero value', () => {
+      expect(isExpirationDateValid(0, 0)).toBe(false);
+    });
+
+    it('should return false when null values', () => {
+      expect(isExpirationDateValid(null, null)).toBe(false);
+    });
+
+    it('should return false when send no params', () => {
+      expect(isExpirationDateValid()).toBe(false);
+    });
   });
 
   describe('#isSecurityCodeValid', () => {
@@ -100,6 +112,18 @@ describe('CreditCard', () => {
 
     it('should return false when its a not mapped card type and security code has not 3 digit', () => {
       expect(isSecurityCodeValid('123', '99')).toBe(false);
+    });
+
+    it('should return false when send empty params', () => {
+      expect(isSecurityCodeValid('', '')).toBe(false);
+    });
+
+    it('should return false when send no params', () => {
+      expect(isSecurityCodeValid()).toBe(false);
+    });
+
+    it('should return false when send null params', () => {
+      expect(isSecurityCodeValid(null, null)).toBe(false);
     });
   });
 
@@ -140,8 +164,22 @@ describe('CreditCard', () => {
       expect(getCreditCardNameByNumber(CREDIT_CARDS.visaMask)).toBe('Visa');
     });
 
-    it('should return false', () => {
+    it('should return false when card number is invalid', () => {
       expect(getCreditCardNameByNumber(INVALID_CREDIT_CARD)).toBe(
+        'Credit card is invalid!'
+      );
+    });
+
+    it('should return false when send no params', () => {
+      expect(getCreditCardNameByNumber()).toBe('Credit card is invalid!');
+    });
+
+    it('should return false when send empty params', () => {
+      expect(getCreditCardNameByNumber('', '')).toBe('Credit card is invalid!');
+    });
+
+    it('should return false when send null params', () => {
+      expect(getCreditCardNameByNumber(null, null)).toBe(
         'Credit card is invalid!'
       );
     });

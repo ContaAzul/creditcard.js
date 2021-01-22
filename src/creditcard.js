@@ -30,6 +30,7 @@ export const isValid = (number) => {
 };
 
 function findCreditCardObjectByNumber(number) {
+  if (!number) return {};
   const numberOnly = number.replace(/[^\d]/g, '');
   return CARDS.find((card) => card.bins.test(numberOnly) && card) || {};
 }
