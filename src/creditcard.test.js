@@ -164,21 +164,21 @@ describe('CreditCard', () => {
       expect(getCreditCardNameByNumber(CREDIT_CARDS.visaMask)).toBe('Visa');
     });
 
-    it('should return false when card number is invalid', () => {
+    it('should return invalid message when card number is invalid', () => {
       expect(getCreditCardNameByNumber(INVALID_CREDIT_CARD)).toBe(
         'Credit card is invalid!'
       );
     });
 
-    it('should return false when send no params', () => {
+    it('should return invalid message when send no params', () => {
       expect(getCreditCardNameByNumber()).toBe('Credit card is invalid!');
     });
 
-    it('should return false when send empty params', () => {
+    it('should return invalid message when send empty params', () => {
       expect(getCreditCardNameByNumber('', '')).toBe('Credit card is invalid!');
     });
 
-    it('should return false when send null params', () => {
+    it('should return invalid message when send null params', () => {
       expect(getCreditCardNameByNumber(null, null)).toBe(
         'Credit card is invalid!'
       );
