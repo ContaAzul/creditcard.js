@@ -3,6 +3,7 @@
 [![Build Status](https://github.com/ContaAzul/creditcard.js/workflows/Build%20Check/badge.svg)](https://github.com/ContaAzul/creditcard.js/actions?query=workflow%3A%22Build+Check%22)
 [![Dependency Status](https://david-dm.org/ContaAzul/creditcard.js.svg)](https://david-dm.org/Semantic-Org/ContaAzul/creditcard.js)
 [![devDependency Status](https://david-dm.org/ContaAzul/creditcard.js/dev-status.svg)](https://david-dm.org/ContaAzul/creditcard.js#info=devDependencies)
+[![npm](https://img.shields.io/npm/v/creditcard.js.svg)](https://www.npmjs.com/package/creditcard.js)
 
 > A simple credit cards validation library in JavaScript.
 
