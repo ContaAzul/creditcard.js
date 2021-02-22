@@ -29,9 +29,10 @@ export const isValid = (number, options = {}) => {
   const sum = sumNumber(number.replace(/\D/g, ''));
   const sumIsOk = sum > 0 && sum % 10 === 0;
 
-  if (cards && cards.length && areCardsSupported(cards)) {
+  if (cards && cards.length) {
     return (
       sumIsOk &&
+      areCardsSupported(cards) &&
       cards
         .map((c) => c.toLowerCase())
         .includes(getCreditCardNameByNumber(number).toLowerCase())
