@@ -28,11 +28,11 @@ $ npm install creditcard.js
 ## Usage
 
 ```javascript
-import { 
-  isValid, 
-  isExpirationDateValid, 
-  isSecurityCodeValid, 
-  getCreditCardNameByNumber 
+import {
+  isValid,
+  isExpirationDateValid,
+  isSecurityCodeValid,
+  getCreditCardNameByNumber,
 } from 'creditcard.js';
 
 isValid('4916108926268679'); // returns true
@@ -52,7 +52,13 @@ Checks whether the credit card number format is valid. _(See the full list of [c
 _Required_\
 Type: `string`
 
------
+**options**
+
+_Optional_\
+Type: `{ cards: string[] } `
+
+---
+
 ### `isExpirationDateValid(month, year)` -> `boolean`
 
 Checks that the expiration date is valid and not expired. _(2 or 4 digit years are accepted)_
@@ -67,7 +73,7 @@ Type: `string`
 _Required_\
 Type: `string`
 
------
+---
 
 ### `isSecurityCodeValid(creditCardNumber, securityCode)` -> `boolean`
 
@@ -83,7 +89,7 @@ Type: `string`
 _Required_\
 Type: `string`
 
------
+---
 
 ### `getCreditCardNameByNumber(number)` -> `string`
 
@@ -94,7 +100,7 @@ Returns the credit card type from the card number. _(See the full list of [curre
 _Required_\
 Type: `string`
 
------
+---
 
 ## Suportted credit card types
 

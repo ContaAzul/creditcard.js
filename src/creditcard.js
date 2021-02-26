@@ -20,14 +20,32 @@ export const isExpirationDateValid = (month, year) => {
   );
 };
 
-export const isValid = (number) => {
+export const isValid = (number, options = {}) => {
   const invalidDigits = new RegExp('[^0-9- ]');
+  const { cards } = options;
 
   if (invalidDigits.test(number)) return false;
 
   const sum = sumNumber(number.replace(/\D/g, ''));
-  return sum > 0 && sum % 10 === 0;
+  const sumIsOk = sum > 0 && sum % 10 === 0;
+
+  if (cards && cards.length) {
+    return (
+      sumIsOk &&
+      areCardsSupported(cards) &&
+      cards
+        .map((c) => c.toLowerCase())
+        .includes(getCreditCardNameByNumber(number).toLowerCase())
+    );
+  }
+
+  return sumIsOk;
 };
+
+function areCardsSupported(passedCards) {
+  const supportedCards = CARDS.map((c) => c.name.toLowerCase());
+  return passedCards.every((c) => supportedCards.includes(c.toLowerCase()));
+}
 
 function findCreditCardObjectByNumber(number) {
   if (!number) return {};
