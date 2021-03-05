@@ -8,16 +8,53 @@ import {
 describe('CreditCard', () => {
   const INVALID_CREDIT_CARD = '00000';
   const CREDIT_CARDS = {
-    visa: '4539578763621486',
-    master: '5369835519963014',
-    diners: '30346836403940',
-    elo: '5041756758046020',
-    discover: '6011091105248358',
-    amex: '373257135458763',
-    aura: '5078601870000127985',
-    hiper: '6062825303833679',
-    visaMask: '4532000000000000',
-    jcb: '3566956197798757',
+    visa: [
+      '4539578763621486',
+      '4111111111111111',
+      '4012888888881881',
+      '4012506712121212',
+      '4222222222222',
+      '4000000000000000030',
+    ],
+    master: ['5369835519963014', '5555555555554444', '2221000010000015'],
+    diners: ['30346836403940', '30569309025904', '38520000023237'],
+    elo: ['5041756758046020'],
+    discover: ['6011091105248358', '6011111111111117', '6011000990139424'],
+    amex: [
+      '373257135458763',
+      '378282246310005',
+      '371449635398431',
+      '378734493671000',
+    ],
+    aura: ['5078601870000127985'],
+    hiper: [
+      '6062825303833679',
+      '6062821086773091',
+      '6375683647504601',
+      '6370957513839696',
+      '6375688248373892',
+      '6012135281693108',
+      '38410036464094',
+      '38414050328938',
+    ],
+    visaMask: ['4532000000000000'],
+    jcb: ['3566956197798757', '3530111333300000', '3566002020360505'],
+    dankort: ['5019123456789013'],
+    visaelectron: ['4917300800000000'],
+    unionpay: [
+      '6271136264806203568',
+      '6236265930072952775',
+      '6204679475679144515',
+      '6216657720782466507',
+    ],
+    maestro: [
+      '6759649826438453',
+      '6759 4111 0000 0008',
+      '6759 6498 2643 8453',
+      '5854 4424 5645 0444',
+    ],
+    troy: ['9792817609140009', '9792817609140132'],
+    americanExpress: ['3412121212121212'],
   };
 
   describe('#validadeExpiryDate', () => {
@@ -83,27 +120,39 @@ describe('CreditCard', () => {
 
   describe('#isSecurityCodeValid', () => {
     it('should return true when its a VALID security code', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.master, '999')).toBe(true);
+      for (let i = 0; i < CREDIT_CARDS.master.length; i++) {
+        expect(isSecurityCodeValid(CREDIT_CARDS.master[i], '999')).toBe(true);
+      }
     });
 
     it('should return true when its a security code of Amex', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.amex, '9999')).toBe(true);
+      for (let i = 0; i < CREDIT_CARDS.amex.length; i++) {
+        expect(isSecurityCodeValid(CREDIT_CARDS.amex[i], '9999')).toBe(true);
+      }
     });
 
     it('should return false when its a wrong security code of Amex', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.amex, '999')).toBe(false);
+      for (let i = 0; i < CREDIT_CARDS.amex.length; i++) {
+        expect(isSecurityCodeValid(CREDIT_CARDS.amex[i], '999')).toBe(false);
+      }
     });
 
     it('should return true when its a security code of Discover', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.discover, '9999')).toBe(true);
+      for (let i = 0; i < CREDIT_CARDS.discover.length; i++) {
+        expect(isSecurityCodeValid(CREDIT_CARDS.discover[i], '9999')).toBe(
+          true
+        );
+      }
     });
 
     it('should return false when its a wrong security code of Visa', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.visa, '9999')).toBe(false);
+      for (let i = 0; i < CREDIT_CARDS.visa.length; i++) {
+        expect(isSecurityCodeValid(CREDIT_CARDS.visa[i], '9999')).toBe(false);
+      }
     });
 
     it('should return false when its a INVALID security code', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.visa, '99')).toBe(false);
+      expect(isSecurityCodeValid(CREDIT_CARDS.visa[0], '99')).toBe(false);
     });
 
     it('should return true when its a not mapped card type and security code has 3 digit', () => {
@@ -129,39 +178,103 @@ describe('CreditCard', () => {
 
   describe('#getCreditCardNameByNumber', () => {
     it('should return the name of Amex', () => {
-      expect(getCreditCardNameByNumber(CREDIT_CARDS.amex)).toBe('Amex');
+      for (let i = 0; i < CREDIT_CARDS.amex.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.amex[i])).toBe('Amex');
+      }
     });
 
     it('should return the name of Mastercard', () => {
-      expect(getCreditCardNameByNumber(CREDIT_CARDS.master)).toBe('Mastercard');
+      for (let i = 0; i < CREDIT_CARDS.master.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.master[i])).toBe(
+          'Mastercard'
+        );
+      }
     });
 
     it('should return the name of Visa', () => {
-      expect(getCreditCardNameByNumber(CREDIT_CARDS.visa)).toBe('Visa');
+      for (let i = 0; i < CREDIT_CARDS.visa.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.visa[i])).toBe('Visa');
+      }
     });
 
     it('should return the name of Diners', () => {
-      expect(getCreditCardNameByNumber(CREDIT_CARDS.diners)).toBe('Diners');
+      for (let i = 0; i < CREDIT_CARDS.diners.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.diners[i])).toBe(
+          'Diners'
+        );
+      }
     });
 
     it('should return the name of Elo', () => {
-      expect(getCreditCardNameByNumber(CREDIT_CARDS.elo)).toBe('Elo');
+      for (let i = 0; i < CREDIT_CARDS.elo.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.elo[i])).toBe('Elo');
+      }
     });
 
     it('should return the name of Aura', () => {
-      expect(getCreditCardNameByNumber(CREDIT_CARDS.aura)).toBe('Aura');
+      for (let i = 0; i < CREDIT_CARDS.aura.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.aura[i])).toBe('Aura');
+      }
     });
 
     it('should return the name of Hipercard', () => {
-      expect(getCreditCardNameByNumber(CREDIT_CARDS.hiper)).toBe('Hipercard');
+      for (let i = 0; i < CREDIT_CARDS.hiper.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.hiper[i])).toBe(
+          'Hipercard'
+        );
+      }
     });
 
     it('should return the name of JCB', () => {
-      expect(getCreditCardNameByNumber(CREDIT_CARDS.jcb)).toBe('JCB');
+      for (let i = 0; i < CREDIT_CARDS.jcb.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.jcb[i])).toBe('JCB');
+      }
     });
 
     it('should return valid name for mask number', () => {
-      expect(getCreditCardNameByNumber(CREDIT_CARDS.visaMask)).toBe('Visa');
+      for (let i = 0; i < CREDIT_CARDS.visaMask.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.visaMask[i])).toBe(
+          'Visa'
+        );
+      }
+    });
+
+    it.skip('should return valid name of Dankort number', () => {
+      for (let i = 0; i < CREDIT_CARDS.dankort.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.dankort[i])).toBe(
+          'Dankort'
+        );
+      }
+    });
+
+    it('should return valid name of VisaElectron number', () => {
+      for (let i = 0; i < CREDIT_CARDS.visaelectron.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.visaelectron[i])).toBe(
+          'Visa'
+        );
+      }
+    });
+
+    it.skip('should return valid name of Unionpay number', () => {
+      for (let i = 0; i < CREDIT_CARDS.unionpay.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.unionpay[i])).toBe(
+          'Unionpay'
+        );
+      }
+    });
+
+    it.skip('should return valid name of Maestro number', () => {
+      for (let i = 0; i < CREDIT_CARDS.maestro.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.maestro[i])).toBe(
+          'Maestro'
+        );
+      }
+    });
+
+    it.skip('should return valid name of Troy number', () => {
+      for (let i = 0; i < CREDIT_CARDS.troy.length; i++) {
+        expect(getCreditCardNameByNumber(CREDIT_CARDS.troy[i])).toBe('Troy');
+      }
     });
 
     it('should return invalid message when card number is invalid', () => {
@@ -186,69 +299,111 @@ describe('CreditCard', () => {
   });
 
   describe('#validate', () => {
+    it('should fail if empty', () => {
+      expect(isValid('')).toBeFalsy();
+    });
+
+    it('should fail if is a bunch of spaces', () => {
+      expect(isValid('                 ')).toBeFalsy();
+    });
+
     it('should return true when its a VALID credit card number', () => {
+      expect(isValid('4242424242424242')).toBeTruthy();
       expect(isValid('4012888888881881')).toBeTruthy();
     });
 
     it('should return true when its a VALID credit card number and contains cards list', () => {
+      expect(isValid('4242424242424242', { cards: ['visa'] })).toBeTruthy();
       expect(isValid('4012888888881881', { cards: ['visa'] })).toBeTruthy();
     });
 
     it('should return false when its a VALID credit card number and contains unsupported cards list', () => {
+      expect(
+        isValid('4242424242424242', { cards: ['foo', 'bar'] })
+      ).toBeFalsy();
       expect(
         isValid('4012888888881881', { cards: ['foo', 'bar'] })
       ).toBeFalsy();
     });
 
     it('should return true when its a VALID credit card number with spaces', () => {
+      expect(isValid('4242 4242 4242 4242')).toBeTruthy();
       expect(isValid('40128 88888 88188 1')).toBeTruthy();
     });
 
     it('should return true when its a VALID credit card number with spaces and contains cards list', () => {
+      expect(isValid('4242 4242 4242 4242', { cards: ['visa'] })).toBeTruthy();
       expect(isValid('40128 88888 88188 1', { cards: ['visa'] })).toBeTruthy();
     });
 
     it('should return false when its a VALID credit card number with spaces and contains unsupported cards list', () => {
+      expect(
+        isValid('4242 4242 4242 4242', { cards: ['foo', 'bar'] })
+      ).toBeFalsy();
       expect(
         isValid('40128 88888 88188 1', { cards: ['foo', 'bar'] })
       ).toBeFalsy();
     });
 
     it('should return true when its a VALID credit card number with dashes', () => {
+      expect(isValid('4242-4242-4242-4242')).toBeTruthy();
       expect(isValid('40128-88888-88188-1')).toBeTruthy();
     });
 
     it('should return true when its a VALID credit card number with dashes and contains cards list', () => {
+      expect(isValid('4242-4242-4242-4242', { cards: ['visa'] })).toBeTruthy();
       expect(isValid('40128-88888-88188-1', { cards: ['visa'] })).toBeTruthy();
     });
 
     it('should return false when its a VALID credit card number with dashes and contains unsupported cards list', () => {
+      expect(
+        isValid('4242-4242-4242-4242', { cards: ['foo', 'bar'] })
+      ).toBeFalsy();
       expect(
         isValid('40128-88888-88188-1', { cards: ['foo', 'bar'] })
       ).toBeFalsy();
     });
 
     it('should return false when its a INVALID credit card number', () => {
+      expect(isValid('4242424242424241')).toBeFalsy();
       expect(isValid('0000000')).toBeFalsy();
     });
 
     it('should return false when its a INVALID credit card number and contains cards list', () => {
+      expect(isValid('4242424242424241', { cards: ['visa'] })).toBeFalsy();
       expect(isValid('0000000', { cards: ['visa'] })).toBeFalsy();
     });
 
     it('should return false when its a INVALID credit card number and contains unsupported cards list', () => {
+      expect(
+        isValid('4242424242424241', { cards: ['foo', 'bar'] })
+      ).toBeFalsy();
       expect(isValid('0000000', { cards: ['foo', 'bar'] })).toBeFalsy();
     });
 
+    it('should fail if is more than 16 digits', () => {
+      expect(isValid('42424242424242424')).toBeFalsy();
+      expect(isValid('424242424242424242')).toBeFalsy();
+    });
+
+    it('should fail if is less than 10 digits', () => {
+      expect(isValid('424242424')).toBeFalsy();
+    });
+
     it('should return false when its contains something other than digits, dashes or spaces', () => {
+      expect(isValid('4242424e42424241')).toBeFalsy();
       expect(isValid('foobar')).toBeFalsy();
     });
 
     it('should return false when its contains something other than digits, dashes or spaces and contains cards list', () => {
+      expect(isValid('4242424e42424241', { cards: ['visa'] })).toBeFalsy();
       expect(isValid('foobar', { cards: ['visa'] })).toBeFalsy();
     });
 
     it('should return false when its contains something other than digits, dashes or spaces and contains unsupported cards list', () => {
+      expect(
+        isValid('4242424e42424241', { cards: ['foo', 'bar'] })
+      ).toBeFalsy();
       expect(isValid('foobar', { cards: ['foo', 'bar'] })).toBeFalsy();
     });
 
