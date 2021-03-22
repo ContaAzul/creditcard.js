@@ -26,7 +26,11 @@ export const isValid = (number, options = {}) => {
 
   if (invalidDigits.test(number)) return false;
 
-  const sum = sumNumber(number.replace(/\D/g, ''));
+  const rawNumber = number.replace(/\D/g, '');
+
+  if (rawNumber.length <= 19) return false;
+
+  const sum = sumNumber(rawNumber);
   const sumIsOk = sum > 0 && sum % 10 === 0;
 
   if (cards && cards.length) {

@@ -200,6 +200,14 @@ describe('CreditCard', () => {
       ).toBeFalsy();
     });
 
+    it('should return false when two valid credit card numbers are concatenated', () => {
+      expect(isValid('40128888888818815500000000000004')).toBe(false);
+    });
+
+    it('should return false when length is greater than 16', () => {
+      expect(isValid('40128888888818811351')).toBe(false);
+    });
+
     it('should return true when its a VALID credit card number with spaces', () => {
       expect(isValid('40128 88888 88188 1')).toBeTruthy();
     });
