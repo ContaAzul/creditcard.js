@@ -204,7 +204,7 @@ describe('CreditCard', () => {
       expect(isValid('40128888888818815500000000000004')).toBe(false);
     });
 
-    it('should return false when length is greater than 16', () => {
+    it('should return false when length is greater than 19', () => {
       expect(isValid('40128888888818811351')).toBe(false);
     });
 

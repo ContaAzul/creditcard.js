@@ -21,30 +21,47 @@ export const isExpirationDateValid = (month, year) => {
 };
 
 export const isValid = (number, options = {}) => {
-  const invalidDigits = new RegExp('[^0-9- ]');
   const { cards } = options;
+  const rawNumber = removeNonNumbersCaracteres(number);
 
-  if (invalidDigits.test(number)) return false;
-
-  const rawNumber = number.replace(/\D/g, '');
-
-  if (rawNumber.length <= 19) return false;
-
-  const sum = sumNumber(rawNumber);
-  const sumIsOk = sum > 0 && sum % 10 === 0;
-
-  if (cards && cards.length) {
-    return (
-      sumIsOk &&
-      areCardsSupported(cards) &&
-      cards
-        .map((c) => c.toLowerCase())
-        .includes(getCreditCardNameByNumber(number).toLowerCase())
-    );
+  if (hasSomeInvalidDigit(number) || !hasCorrectLength(rawNumber)) {
+    return false;
   }
 
-  return sumIsOk;
+  const sum = sumNumber(rawNumber);
+
+  return checkSum(sum) && validateCardsWhenRequired(number, cards);
 };
+
+function validateCardsWhenRequired(number, cards) {
+  return !cards || !cards.length || validateCards(number, cards);
+}
+
+function validateCards(number, cards) {
+  return (
+    areCardsSupported(cards) &&
+    cards
+      .map((c) => c.toLowerCase())
+      .includes(getCreditCardNameByNumber(number).toLowerCase())
+  );
+}
+
+function hasCorrectLength(number) {
+  return number && number.length <= 19;
+}
+
+function removeNonNumbersCaracteres(number) {
+  return number.replace(/\D/g, '');
+}
+
+function hasSomeInvalidDigit(creditcardNumber) {
+  const invalidDigits = new RegExp('[^0-9- ]');
+  return invalidDigits.test(creditcardNumber);
+}
+
+function checkSum(sum) {
+  return sum > 0 && sum % 10 === 0;
+}
 
 function areCardsSupported(passedCards) {
   const supportedCards = CARDS.map((c) => c.name.toLowerCase());
