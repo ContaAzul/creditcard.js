@@ -240,6 +240,10 @@ describe('CreditCard', () => {
       expect(isValid('0000000')).toBeFalsy();
     });
 
+    it('should return false when its a INVALID credit card number with a valid checksum', () => {
+      expect(isValid('132423')).toBeFalsy();
+    });
+
     it('should return false when its a INVALID credit card number and contains cards list', () => {
       expect(isValid('0000000', { cards: ['visa'] })).toBeFalsy();
     });
