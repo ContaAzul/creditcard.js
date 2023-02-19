@@ -15,24 +15,19 @@ creditcard.js is available as a NPM package. You can install through Yarn or NPM
 ### Yarn
 
 ```sh
-$ yarn add creditcard.js
+yarn add creditcard.js
 ```
 
 ### NPM
 
 ```sh
-$ npm install creditcard.js
+npm install creditcard.js
 ```
 
 ## Usage
 
 ```javascript
-import {
-  isValid,
-  isExpirationDateValid,
-  isSecurityCodeValid,
-  getCreditCardNameByNumber,
-} from 'creditcard.js';
+import { isValid, isExpirationDateValid, isSecurityCodeValid, getCreditCardNameByNumber } from 'creditcard.js';
 
 isValid('4916108926268679'); // returns true
 isExpirationDateValid('02', '2020'); // returns true
@@ -92,7 +87,7 @@ Type: `string`
 
 ### `getCreditCardNameByNumber(number)` -> `string`
 
-Returns the credit card type from the card number. _(See the full list of [currently supported cards](#suportted-credit-card-types))_
+Returns the credit card type from the card number. _(See the full list of [currently supported cards](#supported-credit-card-types))_
 
 **number**
 
@@ -101,7 +96,7 @@ Type: `string`
 
 ---
 
-## Suportted credit card types
+## Supported credit card types
 
 - American Express
 - Aura

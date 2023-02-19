@@ -1,5 +1,13 @@
 module.exports = {
-  printWidth: 80,
+  arrowParens: 'avoid',
+  bracketSameLine: true,
+  bracketSpacing: true,
+  endOfLine: 'lf',
+  printWidth: 120,
+  quoteProps: 'as-needed',
+  semi: true,
   singleQuote: true,
-  trailingComma: 'es5'
+  tabWidth: 2,
+  trailingComma: 'all',
+  useTabs: false,
 };

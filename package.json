@@ -3,33 +3,36 @@
   "version": "3.0.25",
   "description": "A simple library for credit-card validation in JavaScript",
   "main": "dist/creditcard.js",
-  "repository": "ContaAzul/creditcard.js",
-  "author": "@ContaAzul",
   "files": [
     "dist"
   ],
   "scripts": {
+    "preinstall": "yarn dlx only-allow yarn",
+    "postinstall": "yarn simple-git-hooks",
     "build": "yarn build:production",
     "build:watch": "rollup -c -w",
     "build:production": "rollup -c",
     "format": "prettier --write './src/**/*.js'",
     "lint": "eslint src",
+    "lint:fix": "yarn lint --fix",
     "test": "jest",
     "test:watch": "yarn test -- --watch",
     "cov": "jest --coverage",
     "cov:serve": "yarn cov && static-server .coverage/lcov-report --port 3000 --no-nocache",
     "cov:publish": "yarn cov && cat ./.coverage/lcov.info | coveralls",
-    "release": "release-it --config release-it.config.js"
+    "release": "release-it --config release-it.config.js",
+    "release:preview": "yarn release --ci --dry-run"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+  "simple-git-hooks": {
+    "commit-msg": "yarn commitlint --edit $1",
+    "pre-commit": "yarn lint-staged"
   },
   "lint-staged": {
-    "*.{js,vue}": [
-      "yarn lint"
+    "*.js": [
+      "yarn lint:fix"
+    ],
+    "*.{json,md,yml}": [
+      "prettier --write"
     ]
   },
   "keywords": [
@@ -39,34 +42,55 @@
     "validator"
   ],
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
-    "@commitlint/format": "^12.1.4",
-    "@release-it/conventional-changelog": "^3.3.0",
-    "babel-jest": "^26.6.3",
-    "conventional-changelog": "^3.1.24",
-    "conventional-changelog-conventionalcommits": "^4.6.1",
-    "coveralls": "^3.1.0",
-    "eslint": "^7.17.0",
-    "eslint-config-prettier": "^7.1.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-prettier": "^3.3.1",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/format": "^17.4.4",
+    "@release-it/conventional-changelog": "^4.3.0",
+    "babel-jest": "^29.4.3",
+    "conventional-changelog": "^3.1.25",
+    "conventional-changelog-conventionalcommits": "^4.6.3",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^5.0.0",
-    "husky": "^4.2.2",
-    "jest": "^26.6.3",
-    "lint-staged": "^9.5.0",
-    "prettier": "^2.2.1",
-    "release-it": "^14.11.6",
+    "jest": "^29.4.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "release-it": "^14.14.3",
     "rollup": "^2.36.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-terser": "^7.0.2",
+    "simple-git-hooks": "^2.8.1",
     "static-server": "^2.2.1"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "packageManager": "yarn@3.4.1",
+  "engines": {
+    "node": ">=18.x",
+    "yarn": ">=3.x"
+  },
+  "homepage": "https://github.com/ContaAzul/creditcard.js",
+  "author": {
+    "name": "ContaAzul",
+    "email": "domphysis@contaazul.com",
+    "url": "https://github.com/ContaAzul/creditcard.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ContaAzul/creditcard.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ContaAzul/creditcard.js/issues"
   },
   "license": "MIT"
 }
