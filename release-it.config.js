@@ -2,7 +2,7 @@
 module.exports = {
   git: {
     tagName: 'v${version}',
-    commitMessage: 'release v${version}',
+    commitMessage: 'chore: release v${version}',
     pushRepo: 'git@github.com:ContaAzul/creditcard.js.git',
     tagAnnotation: 'v${version}',
   },

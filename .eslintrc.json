@@ -1,60 +1,13 @@
 {
+  "extends": ["prettier"],
   "plugins": ["prettier"],
-  "parserOptions": {
-    "sourceType": "module"
-  },
   "env": {
     "es6": true,
     "browser": true,
     "node": true,
     "jasmine": true
   },
-  "extends": ["prettier"],
-  "globals": {
-    "require": true,
-    "creditcard": true,
-    "CREDIT_CARDS": true,
-    "INVALID_CREDIT_CARD": true,
-    "VALID_CREDIT_CARD": true,
-    "luhn": true,
-    "list": true
-  },
-  "rules": {
-    "camelcase": 2,
-    "comma-dangle": [2, {
-      "arrays": "always-multiline",
-      "objects": "always-multiline",
-      "imports": "always-multiline",
-      "exports": "always-multiline",
-      "functions": "never"
-    }],
-    "comma-spacing": 2,
-    "comma-style": [2, "last"],
-    "eol-last": 2,
-    "eqeqeq": 2,
-    "indent": [2, 2],
-    "linebreak-style": [2, "unix"],
-    "max-nested-callbacks": [2, 3],
-    "no-dupe-keys": 2,
-    "no-eq-null": 2,
-    "no-extra-semi": 2,
-    "no-lonely-if": 2,
-    "no-multi-spaces": 0,
-    "no-multiple-empty-lines": [2, {"max": 2}],
-    "no-nested-ternary": 2,
-    "no-param-reassign": 2,
-    "no-self-compare": 2,
-    "no-throw-literal": 2,
-    "no-trailing-spaces": 2,
-    "no-undef": 2,
-    "no-underscore-dangle": 0,
-    "no-void": 2,
-    "one-var": [2, "never"],
-    "prettier/prettier": "error",
-    "quotes": [2, "single"],
-    "semi": [2, "always"],
-    "keyword-spacing": 2,
-    "space-before-function-paren": [2, "never"],
-    "space-in-parens": [2, "never"]
+  "parserOptions": {
+    "sourceType": "module"
   }
 }
