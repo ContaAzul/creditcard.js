@@ -7,8 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "preinstall": "yarn dlx only-allow yarn",
-    "postinstall": "yarn simple-git-hooks",
+    "prepare": "yarn dlx only-allow yarn && yarn simple-git-hooks",
     "build": "yarn build:production",
     "build:watch": "rollup -c -w",
     "build:production": "rollup -c",
