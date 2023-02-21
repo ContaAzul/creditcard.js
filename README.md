@@ -111,6 +111,10 @@ Type: `string`
 - Maxxvan
 - Visa
 
+## Credits
+
+The first version of this library was based on [bin-cc](https://github.com/renatovico/bin-cc).
+
 ## License
 
 MIT © Conta Azul
