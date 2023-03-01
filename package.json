@@ -7,7 +7,10 @@
     "dist"
   ],
   "scripts": {
-    "prepare": "yarn dlx only-allow yarn && yarn simple-git-hooks",
+    "prepack": "ca-pinst --disable",
+    "postpack": "ca-pinst --enable",
+    "preinstall": "yarn dlx only-allow yarn",
+    "postinstall": " yarn simple-git-hooks",
     "build": "yarn build:production",
     "build:watch": "rollup -c -w",
     "build:production": "rollup -c",
@@ -48,6 +51,7 @@
     "@commitlint/format": "^17.4.4",
     "@release-it/conventional-changelog": "^4.3.0",
     "babel-jest": "^29.4.3",
+    "contaazul-pinst": "^1.0.2",
     "conventional-changelog": "^3.1.25",
     "conventional-changelog-conventionalcommits": "^4.6.3",
     "coveralls": "^3.1.1",
@@ -74,7 +78,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "packageManager": "yarn@3.4.1",
-  "engines": {
+  "selfEngines": {
     "node": ">=18.x",
     "yarn": ">=3.x"
   },
