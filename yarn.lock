@@ -3563,6 +3563,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"contaazul-pinst@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "contaazul-pinst@npm:1.0.2"
+  bin:
+    ca-pinst: lib/bin.js
+  checksum: af9ff75208c79cf1c8f826bc2e108e67b4a68383890b59b82c5cd1541fef93aa1c105a6a35bc568274e29a677634e7c3fc809e94e89d18fe74efd3cc5197c9b8
+  languageName: node
+  linkType: hard
+
 "conventional-changelog-angular@npm:^5.0.11, conventional-changelog-angular@npm:^5.0.12":
   version: 5.0.12
   resolution: "conventional-changelog-angular@npm:5.0.12"
@@ -3902,6 +3911,7 @@ __metadata:
     "@commitlint/format": ^17.4.4
     "@release-it/conventional-changelog": ^4.3.0
     babel-jest: ^29.4.3
+    contaazul-pinst: ^1.0.2
     conventional-changelog: ^3.1.25
     conventional-changelog-conventionalcommits: ^4.6.3
     coveralls: ^3.1.1
