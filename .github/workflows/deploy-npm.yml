@@ -12,6 +12,8 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'chore: release v')"
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      COMMIT_AUTHOR_NAME: ${{ github.event.head_commit.author.name }}
+      COMMIT_AUTHOR_EMAIL: ${{ github.event.head_commit.author.email }}
 
     steps:
       - name: Fix up git URLs
@@ -27,8 +29,8 @@ jobs:
       # Configure git
       - name: Configure CI Git User
         run: |
-          git config --global user.name "${{github.event.head_commit.author.name}}"
-          git config --global user.email "${{github.event.head_commit.author.email}}"
+          git config --global user.name "$COMMIT_AUTHOR_NAME"
+          git config --global user.email "$COMMIT_AUTHOR_EMAIL"
           git remote set-url origin https://$GITHUB_ACTOR:$GH_TOKEN@github.com/ContaAzul/creditcard.js
 
       # Setup Node.js build environment
