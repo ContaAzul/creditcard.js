@@ -2,6 +2,7 @@ import CARDS from './cards';
 
 const MILLENNIUM = 1000;
 const DEFAULT_CODE_LENGTH = 3;
+const CARD_NUMBER_LENGTH = 16;
 
 export const getCreditCardNameByNumber = (number) => {
   return findCreditCardObjectByNumber(number).name || 'Credit card is invalid!';
@@ -47,7 +48,7 @@ function validateCards(number, cards) {
 }
 
 function hasCorrectLength(number) {
-  return number && number.length <= 19;
+  return number && number.length === CARD_NUMBER_LENGTH;
 }
 
 function removeNonNumbersCaracteres(number) {
