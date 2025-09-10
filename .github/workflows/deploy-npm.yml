@@ -47,7 +47,7 @@ jobs:
         with:
           path: |
             **/node_modules
-          key: yarn-${{ hashFiles('**/package.json', 'yarn.lock') }}
+          key: yarn-4-${{ hashFiles('**/package.json', 'yarn.lock') }}
 
       # Install project dependencies
       - name: Install Dependencies
