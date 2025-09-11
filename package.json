@@ -7,8 +7,8 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "ca-pinst --disable",
-    "postpack": "ca-pinst --enable",
+    "prepublishOnly": "ca-pinst --disable",
+    "postpublish": "ca-pinst --enable",
     "preinstall": "yarn dlx only-allow yarn",
     "postinstall": " yarn simple-git-hooks",
     "build": "yarn build:production",
