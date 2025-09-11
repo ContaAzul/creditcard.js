@@ -3700,12 +3700,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"contaazul-pinst@npm:^1.1.9":
-  version: 1.1.9
-  resolution: "contaazul-pinst@npm:1.1.9"
+"contaazul-pinst@npm:^1.1.10":
+  version: 1.1.10
+  resolution: "contaazul-pinst@npm:1.1.10"
   bin:
     ca-pinst: lib/bin.js
-  checksum: 10c0/83d32c99e85c92c058209ae04dd99a65fce988ed4d9f47e85cbe37123e79193ed9e7129055e5371c56e18c36f52a30795c816a4eff308a489120a66c80b8d8b1
+  checksum: 10c0/70c09c007739be22f3e2326fd968d218936b76d35a4508f40cfd0438138e1374094e3cd4d08be996a3e482ab4b2a38c55bc4bd1c67c3ea9f7da75de88429c5d1
   languageName: node
   linkType: hard
 
@@ -4048,7 +4048,7 @@ __metadata:
     "@commitlint/format": "npm:^17.4.4"
     "@release-it/conventional-changelog": "npm:^4.3.0"
     babel-jest: "npm:^29.4.3"
-    contaazul-pinst: "npm:^1.1.9"
+    contaazul-pinst: "npm:^1.1.10"
     conventional-changelog: "npm:^3.1.25"
     conventional-changelog-conventionalcommits: "npm:^4.6.3"
     coveralls: "npm:^3.1.1"
