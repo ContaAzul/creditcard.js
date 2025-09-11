@@ -37,7 +37,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'
+          node-version: '22.x'
           registry-url: 'https://registry.npmjs.org'
 
       # Cache dependencies
@@ -47,7 +47,7 @@ jobs:
         with:
           path: |
             **/node_modules
-          key: yarn-4-${{ hashFiles('**/package.json', 'yarn.lock') }}
+          key: yarn-4x-${{ hashFiles('**/package.json', 'yarn.lock') }}
 
       # Install project dependencies
       - name: Install Dependencies
