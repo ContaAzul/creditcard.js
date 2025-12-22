@@ -1,9 +1,9 @@
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
-import { version } from './package.json';
+import pkg from './package.json' with { type: 'json' };
 
 const banner = `/**
- * @name creditcard.js ${version}
+ * @name creditcard.js ${pkg.version}
  * @license MIT
  * @author ContaAzul (contaazul.com)
  */`;

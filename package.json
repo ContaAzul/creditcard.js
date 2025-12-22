@@ -50,6 +50,8 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@commitlint/format": "^17.4.4",
     "@release-it/conventional-changelog": "^4.3.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-terser": "^0.4.4",
     "babel-jest": "^29.4.3",
     "contaazul-pinst": "^1.1.10",
     "conventional-changelog": "^3.1.25",
@@ -68,8 +70,6 @@
     "prettier": "^2.8.4",
     "release-it": "^14.14.3",
     "rollup": "^3.29.5",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-terser": "^0.4.4",
     "simple-git-hooks": "^2.13.1",
     "static-server": "^2.2.1"
   },
