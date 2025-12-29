@@ -77,9 +77,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "packageManager": "yarn@4.9.4",
+  "packageManager": "yarn@4.12.0",
   "selfEngines": {
-    "node": ">=22.x",
+    "node": ">=24.x",
     "yarn": ">=4.x"
   },
   "homepage": "https://github.com/ContaAzul/creditcard.js",
