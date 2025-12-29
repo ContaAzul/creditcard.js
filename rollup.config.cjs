@@ -1,14 +1,14 @@
-import babel from 'rollup-plugin-babel';
-import { terser } from 'rollup-plugin-terser';
-import { version } from './package.json';
+const babel = require('@rollup/plugin-babel');
+const terser = require('@rollup/plugin-terser');
+const pkg = require('./package.json');
 
 const banner = `/**
- * @name creditcard.js ${version}
+ * @name creditcard.js ${pkg.version}
  * @license MIT
  * @author ContaAzul (contaazul.com)
  */`;
 
-export default {
+module.exports = {
   input: 'src/creditcard.js',
   output: [
     {
@@ -23,12 +23,13 @@ export default {
       file: 'dist/creditcard.min.js',
       format: 'cjs',
       name: 'CreditCard',
-      plugins: [terser()],
+      plugins: [terser],
     },
   ],
   plugins: [
     babel({
       exclude: 'node_modules/**',
+      babelHelpers: 'bundled',
     }),
   ],
   watch: {
