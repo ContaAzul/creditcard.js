@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+permissions:
+  id-token: write  # Required for OIDC with npmjs
+  contents: read
+
 jobs:
   publish:
     name: Build and Publish
@@ -58,12 +62,6 @@ jobs:
       - name: Build
         run: yarn build
 
-      # Authenticate to NPM
-      - name: Authenticate with Registry
-        run: |
-          echo "registry=https://registry.npmjs.org/" >> .npmrc
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
-
       # Release and publish version
       - name: Release version
-        run: NPM_TOKEN="${{ secrets.NPM_TOKEN }}" yarn release --ci --npm.skipChecks
+        run: yarn release --ci --npm.skipChecks
