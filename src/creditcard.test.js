@@ -95,7 +95,7 @@ describe('CreditCard', () => {
     })
 
     it('should return true when its a security code of Discover', () => {
-      expect(isSecurityCodeValid(CREDIT_CARDS.discover, '9999')).toBe(true)
+      expect(isSecurityCodeValid(CREDIT_CARDS.discover, '999')).toBe(true)
     })
 
     it('should return false when its a wrong security code of Visa', () => {
