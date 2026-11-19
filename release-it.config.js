@@ -35,6 +35,12 @@ module.exports = {
         if (commits.some(commit => commit.type === 'feat')) return { level: 1 };
         return { level: 2 };
       },
+      // Links fixos: no CI o remote tem credenciais e o parser gera URLs quebradas
+      context: {
+        host: 'https://github.com',
+        owner: 'ContaAzul',
+        repository: 'creditcard.js',
+      },
       writerOpts: {
         headerPartial: () => '',
       },
