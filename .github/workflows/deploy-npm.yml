@@ -29,6 +29,15 @@ jobs:
         with:
           ref: master
           token: ${{ secrets.GH_TOKEN }}
+          persist-credentials: true # release-it pushes the release commit and tag
+
+      # Abort if master moved past the commit approved for this run
+      - name: Check approved revision
+        run: |
+          if [ "$(git rev-parse HEAD)" != "$GITHUB_SHA" ]; then
+            echo "::error::master avançou para $(git rev-parse --short HEAD) durante a aprovação; este run foi aprovado para ${GITHUB_SHA::7}. O run do commit mais novo publica."
+            exit 1
+          fi
 
       # Configure git
       - name: Configure CI Git User
@@ -64,4 +73,19 @@ jobs:
 
       # Release and publish version
       - name: Release version
-        run: yarn release --ci --npm.skipChecks
+        run: yarn release --ci
+
+      # Fail if the published version has no provenance attestation
+      - name: Verify provenance
+        run: |
+          PKG=$(node -p "require('./package.json').name")
+          VERSION=$(node -p "require('./package.json').version")
+          for i in $(seq 1 20); do
+            if npm view "$PKG@$VERSION" dist.attestations.provenance.predicateType --prefer-online 2>/dev/null | grep -q 'slsa.dev/provenance'; then
+              echo "$PKG@$VERSION publicado com atestação de proveniência"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::$PKG@$VERSION sem atestação de proveniência no registry"
+          exit 1
