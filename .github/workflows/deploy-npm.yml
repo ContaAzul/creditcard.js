@@ -1,9 +1,6 @@
 name: Publish package
 
-on:
-  push:
-    branches:
-      - master
+on: push # TESTE NEGATIVO CYBER-7318: filtro de branch removido, simula o ataque
 
 jobs:
   publish:
