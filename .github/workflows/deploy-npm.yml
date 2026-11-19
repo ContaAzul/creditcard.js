@@ -5,14 +5,14 @@ on:
     branches:
       - master
 
-permissions:
-  id-token: write # Required for OIDC with npmjs
-  contents: write
-
 jobs:
   publish:
     name: Build and Publish
     runs-on: ubuntu-latest
+    environment: npm-publish
+    permissions:
+      id-token: write # Required for OIDC with npmjs
+      contents: write
     if: "!contains(github.event.head_commit.message, 'chore: release v')"
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -25,7 +25,7 @@ jobs:
 
       # Checkout the repo
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           ref: master
           token: ${{ secrets.GH_TOKEN }}
@@ -39,14 +39,14 @@ jobs:
 
       # Setup Node.js build environment
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
 
       # Cache dependencies
       - name: Cache Dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         id: cache
         with:
           path: |
