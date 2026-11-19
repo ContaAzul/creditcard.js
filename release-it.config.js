@@ -19,6 +19,25 @@ module.exports = {
     skipChecks: true,
   },
   plugins: {
-    './.github/workflows/scripts/conventional-changelog.js': {},
+    '@release-it/conventional-changelog': {
+      preset: {
+        name: 'conventionalcommits',
+        // Por padrão o preset só lista feat, fix e breaking changes
+        types: [
+          { type: 'feat', section: 'Features' },
+          { type: 'fix', section: 'Bug Fixes' },
+          { type: 'chore', section: 'Chores' },
+        ],
+      },
+      // Mantém o comportamento anterior: todo commit gera release, no mínimo patch
+      whatBump: commits => {
+        if (commits.some(commit => commit.notes.length > 0)) return { level: 0 };
+        if (commits.some(commit => commit.type === 'feat')) return { level: 1 };
+        return { level: 2 };
+      },
+      writerOpts: {
+        headerPartial: () => '',
+      },
+    },
   },
 };

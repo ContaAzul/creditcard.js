@@ -29,6 +29,7 @@ jobs:
         with:
           ref: master
           token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: 0 # conventional-changelog calcula versão e changelog pelo histórico desde a última tag
           persist-credentials: true # release-it pushes the release commit and tag
 
       # Abort if master moved past the commit approved for this run
